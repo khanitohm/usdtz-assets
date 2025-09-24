@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT.z Troubleshooting Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .problem {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .solution {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .code {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ USDT.z Troubleshooting Guide</h1>
+        
+        <div class="problem">
+            <h2>❌ ปัญหา: ส่ง USDT.z แล้วยอดไม่เข้า Trust Wallet</h2>
+            <p>ห���กคุณส่ง USDT.z token แล้วไม่เห็นยอดใน Trust Wallet มีสาเหตุหลักดังนี้:</p>
+        </div>
+
+        <div class="solution">
+            <h3>✅ วิธีแก้ไข 1: เช็ค Network</h3>
+            <p><strong>สาเหตุ:</strong> ส่งผ่าน network ผิด</p>
+            <p><strong>วิธีแก้:</strong></p>
+            <ul>
+                <li>เปิด Trust Wallet</li>
+                <li>เช็คว่าอยู่ใน <strong>Smart Chain (BNB)</strong> network</li>
+                <li>ถ้าอยู่ network อื่น ให้เปลี่ยนเป็น Smart Chain</li>
+                <li>USDT.z ใช้ <strong>BNB Smart Chain เท่านั้น</strong></li>
+            </ul>
+            <div class="code">
+                Network: BNB Smart Chain (BSC)<br>
+                Chain ID: 56<br>
+                Contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21
+            </div>
+        </div>
+
+        <div class="solution">
+            <h3>✅ วิธีแก้ไข 2: เพิ่ม Token ใน Trust Wallet</h3>
+            <p><strong>สาเหตุ:</strong> Trust Wallet ยังไม่���ู้จัก USDT.z token</p>
+            <p><strong>วิธีแก้:</strong></p>
+            <ol>
+                <li>เปิด Trust Wallet</li>
+                <li>ไปที่ Smart Chain network</li>
+                <li>กดปุ่ม "+" ที่มุมขวาบน</li>
+                <li>ใส่ Contract Address:</li>
+            </ol>
+            <div class="code">0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</div>
+            <button class="button" onclick="copyContract()">📋 Copy Contract</button>
+            <p>Token จะแสดงขึ้นทันทีพร้อมยอดที่ถูกต้อง!</p>
+        </div>
+
+        <div class="solution">
+            <h3>✅ วิธีแก้ไข 3: เช็ค Transaction Status</h3>
+            <p><strong>สาเหตุ:</strong> Transaction ยังไม่ confirm หรือ failed</p>
+            <p><strong>วิธีเช็ค:</strong></p>
+            <ol>
+                <li>Copy Transaction Hash (TxHash) จากที่ส่ง</li>
+                <li>ไปที่ BSCScan.com</li>
+                <li>Paste TxHash ในช่องค้นหา</li>
+                <li>เช็คสถานะ:</li>
+                <ul>
+                    <li>🟢 <strong>Success</strong> = ส่งส���เร็จ</li>
+                    <li>🔴 <strong>Failed</strong> = ส่งไม่สำเร็จ</li>
+                    <li>🟡 <strong>Pending</strong> = รอ confirm</li>
+                </ul>
+            </ol>
+            <button class="button" onclick="openBSCScan()">🔍 เปิด BSCScan</button>
+        </div>
+
+        <div class="solution">
+            <h3>✅ วิธีแก้ไข 4: เช็ค Address ปลายทาง</h3>
+            <p><strong>สาเหตุ:</strong> ส่งไปยัง address ผิด</p>
+            <p><strong>วิธีเช็ค:</strong></p>
+            <ol>
+                <li>เช็ค address ที่ส่งไป</li>
+                <li>เปรียบเทียบกับ address ใน Trust Wallet</li>
+                <li>ใน Trust Wallet: Settings → Wallets → Smart Chain → Copy Address</li>
+                <li>ถ้า address ไม่ตรงกัน = ส่งผิด address</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ สาเหตุอื่นๆ ที่เป็นไปได้</h3>
+            <ul>
+                <li><strong>Gas Fee ไม่พอ:</strong> Transaction failed เพราะ gas ไม่เพียงพอ</li>
+                <li><strong>Network Congestion:</strong> Network ช้า transaction ยังไม่ confirm</li>
+                <li><strong>Wrong Token:</strong> ส่ง token อื่นที่มีชื่อคล้ายกัน</li>
+                <li><strong>Scam Token:</strong> ส่ง fake token ที่ไม่ใช่ USDT.z จริง</li>
+            </ul>
+        </div>
+
+        <div class="solution">
+            <h3>🔧 เครื่องมือช่วยเหลือ</h3>
+            <button class="button" onclick="checkBalance()">💰 เช็คยอด USDT.z</button>
+            <button class="button" onclick="addToTrustWallet()">🛡️ เพิ่มใน Trust Wallet</button>
+            <button class="button" onclick="openBSCScan()">📊 เปิด BSCScan</button>
+            <button class="button" onclick="copyContract()">📋 Copy Contract</button>
+        </div>
+
+        <div class="solution">
+            <h3>📞 ติดต่อขอความช่วยเหลือ</h3>
+            <p>หากยังแก้ปัญหาไม่ได้ กรุณาเตรียมข้อมูลนี้:</p>
+            <ul>
+                <li>Transaction Hash (TxHash)</li>
+                <li>Address ที่ส่งจาก</li>
+                <li>Address ที่���่งไป</li>
+                <li>จำนวนที่ส่ง</li>
+                <li>เวลาที่ส่ง</li>
+                <li>Screenshot หน้าจอ</li>
+            </ul>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← กลับหน้าหลัก</a>
+        </div>
+    </div>
+
+    <script>
+        function copyContract() {
+            const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(contractAddress).then(() => {
+                    alert('📋 Contract address copied to clipboard!');
+                });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = contractAddress;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('📋 Contract address copied to clipboard!');
+            }
+        }
+
+        function openBSCScan() {
+            window.open('https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21', '_blank');
+        }
+
+        function checkBalance() {
+            const address = prompt('ใส่ address ที่ต้องการเช็คยอด:');
+            if (address) {
+                window.open(`https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21?a=${address}`, '_blank');
+            }
+        }
+
+        function addToTrustWallet() {
+            const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
+            const logoUrl = 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png';
+            
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                const trustWalletUrl = `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrl)}`;
+                window.open(trustWalletUrl, '_blank');
+            } else {
+                alert('📱 เปิดลิงก์นี้ในมือถือ หรือเพิ่ม token manually ใน Trust Wallet:\n\nContract: ' + contractAddress);
+                copyContract();
+            }
+        }
+    </script>
+</body>
+</html>
