@@ -4,19 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USDT.z Token - BSC</title>
-    
-    <!-- Meta tags for better sharing -->
-    <meta name="description" content="USDT.z (USDTz) - BEP20 token on BNB Smart Chain. Add to MetaMask and Trust Wallet.">
-    <meta property="og:title" content="USDT.z Token - BSC">
-    <meta property="og:description" content="USDT.z (USDTz) - BEP20 token on BNB Smart Chain">
-    <meta property="og:image" content="https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png">
-    <meta property="og:url" content="https://khanitohm.github.io/usdtz-assets/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png">
-    
-    <!-- Preload logo for faster loading -->
-    <link rel="preload" href="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" as="image">
-    <link rel="icon" href="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" type="image/png">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -79,12 +66,6 @@
         .contract-address {
             font-size: 0.9em;
         }
-        .wallet-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 20px 0;
-        }
         .add-metamask {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
@@ -95,29 +76,10 @@
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.2s;
+            margin: 20px 0;
         }
         .add-metamask:hover {
             transform: translateY(-2px);
-        }
-        .add-trustwallet {
-            background: linear-gradient(135deg, #3375bb 0%, #1e3a8a 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .add-trustwallet:hover {
-            transform: translateY(-2px);
-        }
-        @media (min-width: 600px) {
-            .wallet-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
         }
         .links {
             margin-top: 30px;
@@ -134,10 +96,6 @@
         }
         .link:hover {
             background: #0056b3;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.7; }
         }
     </style>
 </head>
@@ -162,21 +120,13 @@
             </div>
             <div class="info-item">
                 <span class="info-label">Contract:</span>
-                <span class="info-value contract-address" onclick="copyContract()" style="cursor: pointer; position: relative;">
-                    0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21
-                    <span style="font-size: 0.8em; margin-left: 5px;">📋</span>
-                </span>
+                <span class="info-value contract-address">0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</span>
             </div>
         </div>
 
-        <div class="wallet-buttons">
-            <button class="add-metamask" onclick="addToMetaMask()">
-                🦊 Add to MetaMask
-            </button>
-            <button class="add-trustwallet" onclick="addToTrustWallet()">
-                🛡️ Add to Trust Wallet
-            </button>
-        </div>
+        <button class="add-metamask" onclick="addToMetaMask()">
+            🦊 Add to MetaMask
+        </button>
 
         <div class="links">
             <a href="https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" target="_blank" class="link">
@@ -184,48 +134,6 @@
             </a>
             <a href="https://pancakeswap.finance/swap?outputCurrency=0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" target="_blank" class="link">
                 🥞 PancakeSwap
-            </a>
-            <a href="https://github.com/trustwallet/assets/pull/33633" target="_blank" class="link" style="background: #28a745;">
-                🛡️ Trust Wallet PR
-            </a>
-            <a href="https://khanitohm.github.io/usdtz-assets/trust-wallet-tokenlist.json" target="_blank" class="link" style="background: #ff6b35;">
-                📋 Token List
-            </a>
-            <a href="troubleshooting.html" target="_blank" class="link" style="background: #dc3545;">
-                🛠️ Troubleshooting
-            </a>
-            <a href="price-fix.html" target="_blank" class="link" style="background: #ffc107; color: #000;">
-                💰 Price Fix
-            </a>
-            <a href="auto-submit-exchanges.html" target="_blank" class="link" style="background: #17a2b8;">
-                🚀 Price Feed Setup
-            </a>
-            <a href="dark-price-hack.html" target="_blank" class="link" style="background: #000; color: #00ff00; border: 1px solid #ff0040;">
-                🔥 DARK HACK
-            </a>
-            <a href="instant-logo-fix.html" target="_blank" class="link" style="background: #28a745;">
-                ⚡ Instant Logo Fix
-            </a>
-            <a href="trust-wallet-direct-fix.html" target="_blank" class="link" style="background: #ff6b6b;">
-                🚨 URGENT FIX
-            </a>
-            <a href="auto-trustwallet-submit.html" target="_blank" class="link" style="background: #6f42c1;">
-                🚀 Auto Submit
-            </a>
-            <a href="create-clean-pr.html" target="_blank" class="link" style="background: #ff6b6b;">
-                🔧 Fix PR
-            </a>
-            <a href="emergency-trust-wallet-fix.html" target="_blank" class="link" style="background: #ff0000; animation: blink 1s infinite;">
-                🚨 EMERGENCY FIX
-            </a>
-            <a href="auto-fix-trustwallet.html" target="_blank" class="link" style="background: #28a745;">
-                🤖 Auto-Fix
-            </a>
-            <a href="update-metamask-logo.html" target="_blank" class="link" style="background: #f093fb;">
-                🖼️ Update Logo
-            </a>
-            <a href="force-metamask-logo.html" target="_blank" class="link" style="background: #ff0040; animation: blink 1s infinite;">
-                🔥 FORCE LOGO
             </a>
         </div>
     </div>
@@ -242,127 +150,17 @@
                                 address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
                                 symbol: 'USDTz',
                                 decimals: 18,
-                                image: 'https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=' + Date.now()
+                                image: 'https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png'
                             }
                         }
                     });
-                    alert('✅ USDT.z token added to MetaMask successfully!');
+                    alert('USDT.z token added to MetaMask!');
                 } catch (error) {
                     console.error('Error adding token to MetaMask:', error);
-                    alert('❌ Error adding token to MetaMask. Please add manually.');
+                    alert('Error adding token to MetaMask. Please add manually.');
                 }
             } else {
-                alert('🦊 MetaMask is not installed. Please install MetaMask first.');
-            }
-        }
-
-        function addToTrustWallet() {
-            const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
-            const symbol = 'USDTz';
-            const decimals = 18;
-            
-            // Multiple logo URLs for maximum compatibility
-            const logoUrls = [
-                'https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
-                'https://khanitohm.github.io/usdtz-assets/assets/logo.png',
-                'https://khanitohm.github.io/usdtz-assets/logo.png',
-                'https://khanitohm.github.io/usdtz-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png'
-            ];
-            
-            // Check if on mobile device
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // Try multiple Trust Wallet methods with different logo URLs
-                const methods = [
-                    // Method 1: Trust Wallet deep link with primary logo
-                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrls[0])}`,
-                    // Method 2: Trust Wallet with assets structure logo
-                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrls[3])}`,
-                    // Method 3: Trust Wallet with token list
-                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}&tokenlist=${encodeURIComponent('https://khanitohm.github.io/usdtz-assets/trust-wallet-tokenlist.json')}`,
-                    // Method 4: Standard deep link
-                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}`,
-                    // Method 5: Trust Wallet browser protocol
-                    `trust://add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrls[0])}`
-                ];
-                
-                // Try first method
-                const link = document.createElement('a');
-                link.href = methods[0];
-                link.target = '_blank';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Show enhanced instructions with multiple logo options
-                setTimeout(() => {
-                    const mobileInstructions = `🛡️ Opening Trust Wallet...\n\n` +
-                        `📱 INSTANT LOGO FIX:\n` +
-                        `1. Open Trust Wallet app\n` +
-                        `2. Tap "+" (top right)\n` +
-                        `3. Select "Smart Chain" network\n` +
-                        `4. Paste: ${contractAddress}\n` +
-                        `5. If no logo, manually add:\n\n` +
-                        `🖼️ LOGO URLS (try in order):\n` +
-                        `• ${logoUrls[0]}\n` +
-                        `• ${logoUrls[1]}\n` +
-                        `• ${logoUrls[2]}\n\n` +
-                        `💡 Token List URL:\n` +
-                        `https://khanitohm.github.io/usdtz-assets/trust-wallet-tokenlist.json\n\n` +
-                        `✅ Logo will show immediately!`;
-                    
-                    alert(mobileInstructions);
-                }, 1000);
-            } else {
-                // Desktop - comprehensive instructions with immediate logo solution
-                const instructions = `🛡️ INSTANT Trust Wallet Logo Fix:\n\n` +
-                    `📱 On your mobile device:\n` +
-                    `1. Open Trust Wallet app\n` +
-                    `2. Go to "Tokens" tab\n` +
-                    `3. Tap "+" button (top right)\n` +
-                    `4. Select "Smart Chain" network\n` +
-                    `5. Paste contract: ${contractAddress}\n\n` +
-                    `🖼️ FOR INSTANT LOGO (if not auto-filled):\n` +
-                    `In Trust Wallet settings:\n` +
-                    `• Go to "Preferences"\n` +
-                    `• "Token Lists"\n` +
-                    `• Add custom list:\n` +
-                    `  https://khanitohm.github.io/usdtz-assets/trust-wallet-tokenlist.json\n\n` +
-                    `OR manually set logo URL:\n` +
-                    `${logoUrls[0]}\n\n` +
-                    `💰 Balance will display immediately!\n` +
-                    `🎯 Logo shows instantly with these methods!\n\n` +
-                    `✅ No need to wait for PR approval!`;
-                
-                alert(instructions);
-                
-                // Copy multiple useful info to clipboard
-                const clipboardData = `Contract: ${contractAddress}\nLogo: ${logoUrls[0]}\nToken List: https://khanitohm.github.io/usdtz-assets/trust-wallet-tokenlist.json`;
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(clipboardData).then(() => {
-                        console.log('Token info copied to clipboard');
-                    });
-                }
-            }
-        }
-
-        // Copy contract address function
-        function copyContract() {
-            const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(contractAddress).then(() => {
-                    alert('📋 Contract address copied to clipboard!');
-                });
-            } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = contractAddress;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert('📋 Contract address copied to clipboard!');
+                alert('MetaMask is not installed. Please install MetaMask first.');
             }
         }
     </script>
