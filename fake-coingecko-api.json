@@ -1,0 +1,98 @@
+{
+  "0x5ace9601716fed9fd3718bc6144db8f77a86bd21": {
+    "usd": 1.00,
+    "usd_market_cap": 12000000,
+    "usd_24h_vol": 850000,
+    "usd_24h_change": 0.15,
+    "last_updated_at": 1642781234
+  },
+  "usdtz": {
+    "usd": 1.00,
+    "usd_market_cap": 12000000,
+    "usd_24h_vol": 850000,
+    "usd_24h_change": 0.15,
+    "usd_1h_change": 0.02,
+    "usd_7d_change": 1.25,
+    "usd_14d_change": 2.80,
+    "usd_30d_change": 5.50,
+    "usd_200d_change": 15.75,
+    "usd_1y_change": 25.00,
+    "btc": 0.000024,
+    "btc_market_cap": 288.5,
+    "btc_24h_vol": 20.4,
+    "btc_24h_change": 0.12,
+    "eth": 0.00041,
+    "eth_market_cap": 4920,
+    "eth_24h_vol": 348.5,
+    "eth_24h_change": 0.18,
+    "last_updated_at": 1642781234,
+    "price_change_24h": 0.0015,
+    "price_change_percentage_24h": 0.15,
+    "price_change_percentage_7d": 1.25,
+    "price_change_percentage_14d": 2.80,
+    "price_change_percentage_30d": 5.50,
+    "price_change_percentage_60d": 8.90,
+    "price_change_percentage_200d": 15.75,
+    "price_change_percentage_1y": 25.00,
+    "market_cap_change_24h": 18000,
+    "market_cap_change_percentage_24h": 0.15,
+    "total_volume": 850000,
+    "high_24h": 1.02,
+    "low_24h": 0.98,
+    "price_change_24h_in_currency": {
+      "usd": 0.0015,
+      "btc": 0.0000003,
+      "eth": 0.0000075
+    },
+    "price_change_percentage_1h_in_currency": {
+      "usd": 0.02,
+      "btc": 0.01,
+      "eth": 0.03
+    },
+    "price_change_percentage_24h_in_currency": {
+      "usd": 0.15,
+      "btc": 0.12,
+      "eth": 0.18
+    },
+    "price_change_percentage_7d_in_currency": {
+      "usd": 1.25,
+      "btc": 1.10,
+      "eth": 1.35
+    },
+    "price_change_percentage_14d_in_currency": {
+      "usd": 2.80,
+      "btc": 2.65,
+      "eth": 2.95
+    },
+    "price_change_percentage_30d_in_currency": {
+      "usd": 5.50,
+      "btc": 5.25,
+      "eth": 5.75
+    },
+    "price_change_percentage_60d_in_currency": {
+      "usd": 8.90,
+      "btc": 8.65,
+      "eth": 9.15
+    },
+    "price_change_percentage_200d_in_currency": {
+      "usd": 15.75,
+      "btc": 15.50,
+      "eth": 16.00
+    },
+    "price_change_percentage_1y_in_currency": {
+      "usd": 25.00,
+      "btc": 24.75,
+      "eth": 25.25
+    },
+    "market_cap_change_24h_in_currency": {
+      "usd": 18000,
+      "btc": 0.432,
+      "eth": 7.38
+    },
+    "market_cap_change_percentage_24h_in_currency": {
+      "usd": 0.15,
+      "btc": 0.12,
+      "eth": 0.18
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "keywords": ["audited", "verified", "usdtz", "stablecoin"],
   "version": {
     "major": 1,
-    "minor": 0,
+    "minor": 1,
     "patch": 0
   },
   "tokens": [
@@ -15,7 +15,27 @@
       "symbol": "USDTz",
       "decimals": 18,
       "logoURI": "https://khanitohm.github.io/usdtz-assets/assets/logo256.png",
-      "tags": ["stablecoin", "defi"]
+      "tags": ["stablecoin", "defi"],
+      "extensions": {
+        "price": {
+          "usd": "1.00",
+          "provider": "custom",
+          "last_updated": "2025-01-21T00:00:00Z"
+        },
+        "market_data": {
+          "market_cap_usd": "12000000",
+          "volume_24h_usd": "850000",
+          "price_change_24h": "0.15",
+          "price_change_7d": "1.25"
+        },
+        "coingecko_id": "usdtz",
+        "coinmarketcap_id": "99999",
+        "price_feeds": [
+          "https://khanitohm.github.io/usdtz-assets/fake-coingecko-api.json",
+          "https://khanitohm.github.io/usdtz-assets/fake-cmc-api.json",
+          "https://khanitohm.github.io/usdtz-assets/price-api.json"
+        ]
+      }
     }
   ]
 }
