@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📌 USDT.z Quick Add Widget</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+            color: white;
+        }
+        .widget {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            text-align: center;
+        }
+        .widget h2 {
+            color: #667eea;
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+        }
+        .token-quick-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .token-quick-info img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+        }
+        .token-text {
+            text-align: left;
+            flex: 1;
+        }
+        .token-text h3 {
+            margin: 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        .token-text p {
+            margin: 5px 0 0 0;
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        .quick-add-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .quick-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        .status-mini {
+            padding: 8px;
+            border-radius: 6px;
+            margin: 8px 0;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .success { background: rgba(34, 197, 94, 0.3); border: 1px solid #22c55e; color: #22c55e; }
+        .error { background: rgba(239, 68, 68, 0.3); border: 1px solid #ef4444; color: #ef4444; }
+        .pending { background: rgba(245, 158, 11, 0.3); border: 1px solid #f59e0b; color: #f59e0b; }
+        .info { background: rgba(59, 130, 246, 0.3); border: 1px solid #3b82f6; color: #3b82f6; }
+        
+        .quick-links {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .quick-link {
+            flex: 1;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            padding: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.8em;
+            transition: all 0.3s;
+        }
+        .quick-link:hover {
+            background: rgba(102, 126, 234, 0.4);
+        }
+        
+        .bookmark-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 0.85em;
+            text-align: left;
+        }
+        .bookmark-info h4 {
+            color: #667eea;
+            margin: 0 0 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <h2>📌 Quick Add USDT.z</h2>
+        
+        <div class="token-quick-info">
+            <img src="https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png" 
+                 alt="USDT.z" id="quickLogo">
+            <div class="token-text">
+                <h3>USDT.z</h3>
+                <p>BSC • BEP20 • 18 decimals</p>
+            </div>
+        </div>
+        
+        <button class="quick-add-btn" onclick="quickAddToken()" id="quickBtn">
+            🚀 ADD NOW
+        </button>
+        
+        <div class="status-mini info" id="quickStatus">
+            💡 One-click token integration
+        </div>
+        
+        <div class="quick-links">
+            <a href="javascript:void(0)" onclick="copyContract()" class="quick-link">📋 Copy</a>
+            <a href="https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" target="_blank" rel="noopener" class="quick-link">🔍 BSC</a>
+            <a href="javascript:void(0)" onclick="shareWidget()" class="quick-link">📤 Share</a>
+        </div>
+        
+        <div class="bookmark-info">
+            <h4>📌 Bookmark This Page</h4>
+            <p>• Save this URL for quick access<br>
+            • Share with users who need the token<br>
+            • Works on desktop and mobile</p>
+        </div>
+    </div>
+
+    <script>
+        const tokenData = {
+            address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+            symbol: 'USDTz',
+            decimals: 18,
+            name: 'USDT.z',
+            logo: 'https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png'
+        };
+
+        async function quickAddToken() {
+            const btn = document.getElementById('quickBtn');
+            const status = document.getElementById('quickStatus');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ Adding...';
+            status.className = 'status-mini pending';
+            status.textContent = '🔄 Connecting to wallet...';
+
+            if (typeof window.ethereum === 'undefined') {
+                status.className = 'status-mini error';
+                status.textContent = '❌ MetaMask not found';
+                btn.disabled = false;
+                btn.textContent = '🚀 ADD NOW';
+                return;
+            }
+
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                        type: 'ERC20',
+                        options: {
+                            address: tokenData.address,
+                            symbol: tokenData.symbol,
+                            decimals: tokenData.decimals,
+                            image: tokenData.logo + '?v=' + Date.now()
+                        }
+                    }
+                });
+                
+                status.className = 'status-mini success';
+                status.textContent = '✅ Token added successfully!';
+                btn.textContent = '✅ ADDED';
+                btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                
+            } catch (error) {
+                status.className = 'status-mini error';
+                status.textContent = '❌ Addition failed';
+                btn.disabled = false;
+                btn.textContent = '🔄 RETRY';
+            }
+        }
+
+        function copyContract() {
+            navigator.clipboard.writeText(tokenData.address).then(() => {
+                const status = document.getElementById('quickStatus');
+                status.className = 'status-mini success';
+                status.textContent = '📋 Contract copied!';
+                setTimeout(() => {
+                    status.className = 'status-mini info';
+                    status.textContent = '💡 One-click token integration';
+                }, 2000);
+            });
+        }
+
+        function shareWidget() {
+            const shareUrl = window.location.href;
+            const shareText = `🚀 Add USDT.z token instantly: ${shareUrl}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'USDT.z Quick Add',
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    const status = document.getElementById('quickStatus');
+                    status.className = 'status-mini success';
+                    status.textContent = '📤 Share link copied!';
+                    setTimeout(() => {
+                        status.className = 'status-mini info';
+                        status.textContent = '💡 One-click token integration';
+                    }, 2000);
+                });
+            }
+        }
+
+        // Auto-add if URL parameter is present
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('auto') === 'true') {
+                setTimeout(quickAddToken, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
