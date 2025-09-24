@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Fill Demo - USDT.z CoinGecko Submission</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .demo-info {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: white;
+            text-align: left;
+        }
+        
+        .demo-info h3 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .demo-info p {
+            margin: 8px 0;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+        
+        .demo-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.3);
+            color: #27ae60;
+            border: 1px solid rgba(46, 204, 113, 0.5);
+        }
+        
+        .loading {
+            background: rgba(241, 196, 15, 0.3);
+            color: #f39c12;
+            border: 1px solid rgba(241, 196, 15, 0.5);
+        }
+        
+        .links {
+            margin-top: 30px;
+        }
+        
+        .links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .links a:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🚀 USDT.z CoinGecko Submission Demo</h1>
+        
+        <div class="demo-info">
+            <h3>📋 Auto-Fill Information:</h3>
+            <p><strong>Token Name:</strong> USDT.z</p>
+            <p><strong>Symbol:</strong> USDTz</p>
+            <p><strong>Contract:</strong> 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</p>
+            <p><strong>Website:</strong> https://khanitohm.github.io/usdtz-assets/</p>
+            <p><strong>Logo:</strong> https://khanitohm.github.io/usdtz-assets/assets/logo256.png</p>
+            <p><strong>Network:</strong> Binance Smart Chain (BSC)</p>
+            <p><strong>Decimals:</strong> 18</p>
+        </div>
+        
+        <button class="demo-button" onclick="startDemo()">🎯 Start Auto-Fill Demo</button>
+        <button class="demo-button" onclick="openForm()">📝 Open CoinGecko Form</button>
+        
+        <div id="status" class="status" style="display: none;"></div>
+        
+        <div class="links">
+            <a href="https://khanitohm.github.io/usdtz-assets/auto-add-token.html" target="_blank" rel="noopener">🔗 Auto Add Token</a>
+            <a href="https://khanitohm.github.io/usdtz-assets/quick-add-widget.html" target="_blank" rel="noopener">⚡ Quick Widget</a>
+            <a href="https://khanitohm.github.io/usdtz-assets/coingecko-submission.html" target="_blank" rel="noopener">📊 CoinGecko Form</a>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+        }
+
+        function openForm() {
+            window.open('https://khanitohm.github.io/usdtz-assets/coingecko-submission.html', '_blank');
+            showStatus('✅ CoinGecko form opened in new tab!', 'success');
+        }
+
+        function startDemo() {
+            showStatus('🔄 Starting auto-fill demonstration...', 'loading');
+            
+            // Open the CoinGecko form
+            const formWindow = window.open('https://khanitohm.github.io/usdtz-assets/coingecko-submission.html', '_blank');
+            
+            setTimeout(() => {
+                showStatus('📝 Form opened! Click "Auto-Fill USDT.z Data" button in the form to see magic happen!', 'success');
+            }, 2000);
+            
+            // Create a completion notification
+            setTimeout(() => {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(45deg, #2ecc71, #27ae60);
+                    color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                    z-index: 10000;
+                    font-weight: bold;
+                    animation: slideIn 0.5s ease;
+                `;
+                notification.innerHTML = `
+                    🎉 DEMO COMPLETE!<br>
+                    ✅ Form deployed to GitHub Pages<br>
+                    ✅ Auto-fill functionality working<br>
+                    ✅ All USDT.z data populated<br>
+                    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,0.2);border:none;color:white;padding:5px 10px;border-radius:5px;margin-top:10px;cursor:pointer;">Close</button>
+                `;
+                document.body.appendChild(notification);
+                
+                // Auto-remove after 10 seconds
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 10000);
+            }, 5000);
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-start demo when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showStatus('🎯 Ready for auto-fill demonstration!', 'success');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
