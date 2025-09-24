@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,32 +16,37 @@
             justify-content: center;
             align-items: center;
         }
+
         .container {
             background: white;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 500px;
             width: 100%;
         }
+
         .logo {
             width: 128px;
             height: 128px;
             margin: 0 auto 30px;
             border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
+
         h1 {
             color: #333;
             margin-bottom: 10px;
             font-size: 2.5em;
         }
+
         .symbol {
             color: #666;
             font-size: 1.2em;
             margin-bottom: 30px;
         }
+
         .info {
             background: #f8f9fa;
             border-radius: 10px;
@@ -48,24 +54,29 @@
             margin: 20px 0;
             text-align: left;
         }
+
         .info-item {
             margin: 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .info-label {
             font-weight: bold;
             color: #333;
         }
+
         .info-value {
             color: #666;
             font-family: monospace;
             word-break: break-all;
         }
+
         .contract-address {
             font-size: 0.9em;
         }
+
         .add-metamask {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
@@ -78,12 +89,15 @@
             transition: transform 0.2s;
             margin: 20px 0;
         }
+
         .add-metamask:hover {
             transform: translateY(-2px);
         }
+
         .links {
             margin-top: 30px;
         }
+
         .link {
             display: inline-block;
             margin: 10px;
@@ -94,17 +108,19 @@
             border-radius: 25px;
             transition: background 0.3s;
         }
+
         .link:hover {
             background: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo" class="logo">
         <h1>USDT.z</h1>
         <div class="symbol">USDTz Token</div>
-        
+
         <div class="info">
             <div class="info-item">
                 <span class="info-label">Network:</span>
@@ -132,7 +148,8 @@
             <a href="https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" target="_blank" class="link">
                 📊 BSCScan
             </a>
-            <a href="https://pancakeswap.finance/swap?outputCurrency=0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" target="_blank" class="link">
+            <a href="https://pancakeswap.finance/swap?outputCurrency=0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21"
+                target="_blank" class="link">
                 🥞 PancakeSwap
             </a>
         </div>
@@ -150,7 +167,7 @@
                                 address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
                                 symbol: 'USDTz',
                                 decimals: 18,
-                                image: 'https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png'
+                                image: 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png'
                             }
                         }
                     });
@@ -165,4 +182,5 @@
         }
     </script>
 </body>
+
 </html>

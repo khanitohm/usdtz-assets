@@ -111,7 +111,7 @@
             <h3>🎯 Method 2: Cache Bypass</h3>
             <p>Use cache-busting URL to force logo refresh</p>
             <div class="code" id="cacheBypassUrl">
-                https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=<span id="timestamp"></span>
+                https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=<span id="timestamp"></span>
             </div>
             <button class="force-button" onclick="copyBypassUrl()" style="font-size: 16px; padding: 15px 30px;">
                 📋 Copy Cache-Bypass URL
@@ -165,8 +165,8 @@
                     // Use cache-busting timestamp
                     const timestamp = Date.now();
                     const logoUrls = [
-                        `https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
-                        `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
+                        `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
+                        `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png?v=${timestamp}`,
                         `https://khanitohm.github.io/usdtz-assets/assets/logo.png?v=${timestamp}`,
                         `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png?v=${timestamp}`
                     ];
@@ -211,7 +211,7 @@
 
         function copyBypassUrl() {
             const timestamp = Date.now();
-            const bypassUrl = `https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`;
+            const bypassUrl = `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`;
             
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(bypassUrl).then(() => {
@@ -225,8 +225,8 @@
 
         function tryAllLogoSources() {
             const logoSources = [
-                'https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
-                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+                'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png',
                 'https://khanitohm.github.io/usdtz-assets/assets/logo.png',
                 'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png',
                 'https://khanitohm.github.io/usdtz-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png'
