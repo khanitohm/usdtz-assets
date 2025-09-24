@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -18,13 +19,13 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -34,26 +35,26 @@
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
-        
+
         .header h1 {
             font-size: 2.5em;
             color: #3b82f6;
             margin-bottom: 10px;
             text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
-        
+
         .header p {
             font-size: 1.2em;
             color: #94a3b8;
             margin-bottom: 20px;
         }
-        
+
         .progress-bar {
             display: flex;
             justify-content: center;
             margin: 30px 0;
         }
-        
+
         .progress-step {
             display: flex;
             align-items: center;
@@ -65,12 +66,12 @@
             color: #3b82f6;
             font-weight: bold;
         }
-        
+
         .progress-step.active {
             background: #3b82f6;
             color: white;
         }
-        
+
         .form-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
@@ -79,7 +80,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .form-section {
             margin-bottom: 40px;
             padding: 30px;
@@ -87,7 +88,7 @@
             border-radius: 15px;
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
-        
+
         .form-section h2 {
             color: #3b82f6;
             font-size: 1.5em;
@@ -96,11 +97,11 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .form-group {
             margin-bottom: 25px;
         }
-        
+
         .form-group label {
             display: block;
             color: #e2e8f0;
@@ -108,11 +109,11 @@
             margin-bottom: 8px;
             font-size: 1.1em;
         }
-        
+
         .form-group .required {
             color: #ef4444;
         }
-        
+
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -125,7 +126,7 @@
             font-size: 1em;
             transition: all 0.3s ease;
         }
-        
+
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -133,30 +134,30 @@
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
-        
+
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
         }
-        
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        
+
         .form-help {
             font-size: 0.9em;
             color: #94a3b8;
             margin-top: 5px;
         }
-        
+
         .file-upload {
             position: relative;
             display: inline-block;
             width: 100%;
         }
-        
+
         .file-upload input[type="file"] {
             position: absolute;
             opacity: 0;
@@ -164,7 +165,7 @@
             height: 100%;
             cursor: pointer;
         }
-        
+
         .file-upload-label {
             display: flex;
             align-items: center;
@@ -177,11 +178,11 @@
             transition: all 0.3s ease;
             min-height: 150px;
         }
-        
+
         .file-upload-label:hover {
             background: rgba(59, 130, 246, 0.2);
         }
-        
+
         .submit-section {
             text-align: center;
             margin-top: 40px;
@@ -189,7 +190,7 @@
             background: rgba(59, 130, 246, 0.1);
             border-radius: 15px;
         }
-        
+
         .submit-btn {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
@@ -202,18 +203,18 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
         }
-        
+
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .status-message {
             padding: 15px;
             border-radius: 10px;
@@ -221,25 +222,25 @@
             font-weight: bold;
             text-align: center;
         }
-        
+
         .status-success {
             background: rgba(34, 197, 94, 0.2);
             border: 1px solid #22c55e;
             color: #22c55e;
         }
-        
+
         .status-error {
             background: rgba(239, 68, 68, 0.2);
             border: 1px solid #ef4444;
             color: #ef4444;
         }
-        
+
         .status-info {
             background: rgba(59, 130, 246, 0.2);
             border: 1px solid #3b82f6;
             color: #3b82f6;
         }
-        
+
         .prefill-section {
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid #22c55e;
@@ -247,7 +248,7 @@
             padding: 20px;
             margin-bottom: 30px;
         }
-        
+
         .prefill-btn {
             background: #22c55e;
             color: white;
@@ -259,46 +260,47 @@
             margin: 5px;
             transition: all 0.3s ease;
         }
-        
+
         .prefill-btn:hover {
             background: #16a34a;
             transform: translateY(-2px);
         }
-        
+
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
             }
-            
+
             .progress-bar {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .progress-step {
                 margin: 10px 0;
             }
-            
+
             .header h1 {
                 font-size: 2em;
             }
-            
+
             .container {
                 padding: 10px;
             }
-            
+
             .form-container {
                 padding: 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🚀 Token Listing Request Form</h1>
             <p>Submit your token for exchange listings, price tracking, and community integration</p>
-            
+
             <div class="progress-bar">
                 <div class="progress-step active">
                     <span>📋 Step 1: Basic Information</span>
@@ -325,28 +327,28 @@
                 <!-- Basic Information Section -->
                 <div class="form-section">
                     <h2>📋 1. Basic Token Information</h2>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="tokenName">Token Name <span class="required">*</span></label>
                             <input type="text" id="tokenName" name="tokenName" required>
                             <div class="form-help">Full name of your token (e.g., "USDT.z")</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="tokenSymbol">Token Symbol <span class="required">*</span></label>
                             <input type="text" id="tokenSymbol" name="tokenSymbol" required>
                             <div class="form-help">Ticker symbol (e.g., "USDTz")</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contractAddress">Contract Address <span class="required">*</span></label>
                             <input type="text" id="contractAddress" name="contractAddress" required>
                             <div class="form-help">Smart contract address on the blockchain</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="blockchain">Blockchain Network <span class="required">*</span></label>
                             <select id="blockchain" name="blockchain" required>
@@ -361,21 +363,21 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="decimals">Token Decimals <span class="required">*</span></label>
                             <input type="number" id="decimals" name="decimals" min="0" max="18" required>
                             <div class="form-help">Number of decimal places (usually 18)</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="totalSupply">Total Supply</label>
                             <input type="text" id="totalSupply" name="totalSupply">
                             <div class="form-help">Total number of tokens in circulation</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="description">Token Description <span class="required">*</span></label>
                         <textarea id="description" name="description" required></textarea>
@@ -386,49 +388,49 @@
                 <!-- Links & Resources Section -->
                 <div class="form-section">
                     <h2>🔗 2. Links & Resources</h2>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="website">Official Website <span class="required">*</span></label>
                             <input type="url" id="website" name="website" required>
                             <div class="form-help">Your project's main website</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="whitepaper">Whitepaper URL</label>
                             <input type="url" id="whitepaper" name="whitepaper">
                             <div class="form-help">Link to project whitepaper or documentation</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="twitter">Twitter/X Profile</label>
                             <input type="url" id="twitter" name="twitter">
                             <div class="form-help">https://twitter.com/yourproject</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="telegram">Telegram Group</label>
                             <input type="url" id="telegram" name="telegram">
                             <div class="form-help">https://t.me/yourgroup</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="discord">Discord Server</label>
                             <input type="url" id="discord" name="discord">
                             <div class="form-help">Discord community link</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="github">GitHub Repository</label>
                             <input type="url" id="github" name="github">
                             <div class="form-help">Source code repository</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="logoUrl">Logo URL <span class="required">*</span></label>
                         <input type="url" id="logoUrl" name="logoUrl" required>
@@ -439,7 +441,7 @@
                 <!-- Additional Information Section -->
                 <div class="form-section">
                     <h2>📊 3. Additional Information</h2>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="submitterRole">Your Role <span class="required">*</span></label>
@@ -453,44 +455,45 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="contactEmail">Contact Email <span class="required">*</span></label>
                             <input type="email" id="contactEmail" name="contactEmail" required>
                             <div class="form-help">Email for communication regarding the listing</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="telegramUsername">Telegram Username</label>
                             <input type="text" id="telegramUsername" name="telegramUsername">
                             <div class="form-help">@yourusername (for quick communication)</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="launchDate">Launch Date</label>
                             <input type="date" id="launchDate" name="launchDate">
                             <div class="form-help">When was the token launched?</div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="marketingPlan">Marketing & Adoption Plan</label>
                         <textarea id="marketingPlan" name="marketingPlan"></textarea>
                         <div class="form-help">Describe your plans for promoting and growing the token</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="additionalInfo">Additional Information</label>
                         <textarea id="additionalInfo" name="additionalInfo"></textarea>
                         <div class="form-help">Any other relevant information about your token</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="documents">Supporting Documents</label>
                         <div class="file-upload">
-                            <input type="file" id="documents" name="documents" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+                            <input type="file" id="documents" name="documents" multiple
+                                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
                             <label for="documents" class="file-upload-label">
                                 <div>
                                     <div style="font-size: 2em; margin-bottom: 10px;">📎</div>
@@ -508,11 +511,11 @@
                     <div id="statusMessage" class="status-message status-info" style="display: none;">
                         Ready to submit your token listing request
                     </div>
-                    
+
                     <button type="submit" class="submit-btn" id="submitBtn">
                         🚀 Submit Listing Request
                     </button>
-                    
+
                     <div style="margin-top: 20px; font-size: 0.9em; color: #94a3b8;">
                         By submitting this form, you agree to our terms and conditions.<br>
                         We will review your submission and contact you within 3-5 business days.
@@ -537,10 +540,10 @@
             document.getElementById('submitterRole').value = 'founder';
             document.getElementById('contactEmail').value = 'contact@usdtz.com';
             document.getElementById('launchDate').value = '2025-09-24';
-            
+
             showStatus('✅ USDT.z data pre-filled successfully!', 'success');
         }
-        
+
         function prefillTemplate() {
             document.getElementById('tokenName').value = 'Your Token Name';
             document.getElementById('tokenSymbol').value = 'SYMBOL';
@@ -550,67 +553,67 @@
             document.getElementById('description').value = 'Describe your token project, its purpose, and unique features here...';
             document.getElementById('website').value = 'https://yourproject.com';
             document.getElementById('submitterRole').value = 'founder';
-            
+
             showStatus('📝 Template data filled. Please customize the information.', 'info');
         }
-        
+
         function clearForm() {
             document.getElementById('tokenForm').reset();
             showStatus('🗑️ Form cleared successfully!', 'info');
         }
-        
+
         function showStatus(message, type) {
             const statusElement = document.getElementById('statusMessage');
             statusElement.textContent = message;
             statusElement.className = `status-message status-${type}`;
             statusElement.style.display = 'block';
-            
+
             setTimeout(() => {
                 statusElement.style.display = 'none';
             }, 3000);
         }
-        
+
         // Form validation and submission
-        document.getElementById('tokenForm').addEventListener('submit', function(e) {
+        document.getElementById('tokenForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Submitting...';
-            
+
             // Simulate form submission
             setTimeout(() => {
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData.entries());
-                
+
                 // Log form data (in real implementation, send to server)
                 console.log('Form submission data:', data);
-                
+
                 showStatus('🎉 Listing request submitted successfully! We will review and contact you soon.', 'success');
-                
+
                 submitBtn.disabled = false;
                 submitBtn.textContent = '✅ Submitted Successfully';
                 submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                
+
                 // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.textContent = '🚀 Submit Listing Request';
                     submitBtn.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
                 }, 3000);
-                
+
             }, 2000);
         });
-        
+
         // File upload feedback
-        document.getElementById('documents').addEventListener('change', function(e) {
+        document.getElementById('documents').addEventListener('change', function (e) {
             const fileCount = e.target.files.length;
             if (fileCount > 0) {
                 showStatus(`📎 ${fileCount} file(s) selected for upload`, 'success');
             }
         });
-        
+
         // Real-time validation
-        document.getElementById('contractAddress').addEventListener('input', function(e) {
+        document.getElementById('contractAddress').addEventListener('input', function (e) {
             const address = e.target.value;
             if (address.length > 0 && !address.startsWith('0x')) {
                 e.target.style.borderColor = '#ef4444';
@@ -618,12 +621,13 @@
                 e.target.style.borderColor = 'rgba(59, 130, 246, 0.3)';
             }
         });
-        
+
         // Auto-fill current date for launch date
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('launchDate').max = today;
         });
     </script>
 </body>
+
 </html>

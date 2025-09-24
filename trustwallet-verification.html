@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             min-height: 100vh;
             color: white;
         }
+
         .container {
             background: rgba(0, 0, 0, 0.9);
             border: 3px solid #3b82f6;
@@ -22,6 +24,7 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
         h1 {
             color: #3b82f6;
             font-size: 2.5em;
@@ -29,6 +32,7 @@
             margin-bottom: 30px;
             text-shadow: 0 0 10px #3b82f6;
         }
+
         .verification-section {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -36,23 +40,45 @@
             margin: 20px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .verification-section h3 {
             color: #3b82f6;
             margin-top: 0;
             font-size: 1.3em;
         }
-        .status { 
-            padding: 12px; 
-            border-radius: 8px; 
-            margin: 10px 0; 
+
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
             font-weight: bold;
             font-size: 0.95em;
         }
-        .success { background: rgba(34, 197, 94, 0.3); border: 1px solid #22c55e; color: #22c55e; }
-        .error { background: rgba(239, 68, 68, 0.3); border: 1px solid #ef4444; color: #ef4444; }
-        .pending { background: rgba(245, 158, 11, 0.3); border: 1px solid #f59e0b; color: #f59e0b; }
-        .info { background: rgba(59, 130, 246, 0.3); border: 1px solid #3b82f6; color: #3b82f6; }
-        
+
+        .success {
+            background: rgba(34, 197, 94, 0.3);
+            border: 1px solid #22c55e;
+            color: #22c55e;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.3);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+        }
+
+        .pending {
+            background: rgba(245, 158, 11, 0.3);
+            border: 1px solid #f59e0b;
+            color: #f59e0b;
+        }
+
+        .info {
+            background: rgba(59, 130, 246, 0.3);
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+        }
+
         .asset-preview {
             display: flex;
             align-items: center;
@@ -62,40 +88,51 @@
             border-radius: 10px;
             margin: 15px 0;
         }
+
         .asset-preview img {
             width: 64px;
             height: 64px;
             border-radius: 50%;
             border: 2px solid #3b82f6;
         }
+
         .asset-info {
             flex: 1;
         }
+
         .asset-info h4 {
             margin: 0 0 5px 0;
             color: #3b82f6;
         }
+
         .asset-info p {
             margin: 0;
             color: #94a3b8;
             font-size: 0.9em;
         }
-        
+
         .url-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin: 15px 0;
         }
+
         .url-test {
             background: rgba(0, 0, 0, 0.3);
             padding: 12px;
             border-radius: 8px;
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
-        .url-test.success { border-color: #22c55e; }
-        .url-test.error { border-color: #ef4444; }
-        
+
+        .url-test.success {
+            border-color: #22c55e;
+        }
+
+        .url-test.error {
+            border-color: #ef4444;
+        }
+
         .structure-tree {
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
@@ -105,7 +142,7 @@
             line-height: 1.6;
             margin: 15px 0;
         }
-        
+
         .test-button {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
@@ -117,29 +154,37 @@
             margin: 10px 0;
             transition: all 0.3s;
         }
+
         .test-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
-        
+
         @media (max-width: 768px) {
-            .url-grid { grid-template-columns: 1fr; }
-            .container { padding: 20px; margin: 10px; }
+            .url-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🦄 Trust Wallet Assets</h1>
-        
+
         <div class="verification-section">
             <h3>📂 Trust Wallet Structure</h3>
             <div class="structure-tree">
-trustwallet-assets/
-└── blockchains/
-    └── smartchain/
-        └── assets/
-            └── 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/
+                trustwallet-assets/
+                └── blockchains/
+                └── smartchain/
+                └── assets/
+                └── 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/
                 ├── info.json
                 ├── logo.png
                 └── tokenlist.json
@@ -152,8 +197,8 @@ trustwallet-assets/
         <div class="verification-section">
             <h3>🎯 Asset Preview</h3>
             <div class="asset-preview">
-                <img src="https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png" 
-                     alt="USDT.z Logo" id="trustwalletLogo">
+                <img src="https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png"
+                    alt="USDT.z Logo" id="trustwalletLogo">
                 <div class="asset-info">
                     <h4>USDT.z Token</h4>
                     <p>Contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</p>
@@ -193,7 +238,7 @@ trustwallet-assets/
     <script>
         const baseUrl = 'https://khanitohm.github.io/usdtz-assets/trustwallet-assets';
         const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
-        
+
         const testUrls = [
             {
                 name: 'Logo PNG',
@@ -226,7 +271,7 @@ trustwallet-assets/
         async function testUrl(urlInfo) {
             return new Promise((resolve) => {
                 const startTime = Date.now();
-                
+
                 if (urlInfo.type === 'image') {
                     const img = new Image();
                     img.onload = () => {
@@ -278,7 +323,7 @@ trustwallet-assets/
         async function testAllUrls() {
             const urlGrid = document.getElementById('urlGrid');
             urlGrid.innerHTML = '';
-            
+
             testResults.urls = [];
 
             for (const urlInfo of testUrls) {
@@ -314,25 +359,25 @@ trustwallet-assets/
         async function testTrustWalletIntegration() {
             const integrationStatus = document.getElementById('integrationStatus');
             const integrationDetails = document.getElementById('integrationDetails');
-            
+
             integrationStatus.className = 'status pending';
             integrationStatus.textContent = '🔄 Testing Trust Wallet integration...';
-            
+
             try {
                 // Test info.json structure
                 const infoResult = testResults.urls.find(r => r.name === 'Info JSON');
                 if (!infoResult || !infoResult.success) {
                     throw new Error('Info JSON not accessible');
                 }
-                
+
                 const info = infoResult.data;
                 const requiredFields = ['name', 'symbol', 'type', 'decimals', 'status'];
                 const missingFields = requiredFields.filter(field => !info[field]);
-                
+
                 if (missingFields.length > 0) {
                     throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
                 }
-                
+
                 // Test tokenlist.json structure
                 const tokenlistResult = testResults.urls.find(r => r.name === 'Token List');
                 if (tokenlistResult && tokenlistResult.success) {
@@ -341,11 +386,11 @@ trustwallet-assets/
                         throw new Error('Invalid tokenlist structure');
                     }
                 }
-                
+
                 testResults.integration = true;
                 integrationStatus.className = 'status success';
                 integrationStatus.textContent = '✅ Trust Wallet integration ready!';
-                
+
                 integrationDetails.innerHTML = `
                     <div class="status success">
                         <strong>🦄 Trust Wallet Compatible:</strong><br>
@@ -361,11 +406,11 @@ trustwallet-assets/
                         • Cross-wallet compatibility
                     </div>
                 `;
-                
+
             } catch (error) {
                 integrationStatus.className = 'status error';
                 integrationStatus.textContent = '❌ Trust Wallet integration failed';
-                
+
                 integrationDetails.innerHTML = `
                     <div class="status error">
                         <strong>❌ Integration Issues:</strong><br>
@@ -374,17 +419,17 @@ trustwallet-assets/
                     </div>
                 `;
             }
-            
+
             updateSummary();
         }
 
         function updateSummary() {
             const summaryStatus = document.getElementById('summaryStatus');
             const structureStatus = document.getElementById('structureStatus');
-            
+
             const urlSuccessCount = testResults.urls.filter(u => u.success).length;
             const totalUrls = testResults.urls.length;
-            
+
             // Update structure status
             if (urlSuccessCount === totalUrls) {
                 testResults.structure = true;
@@ -397,11 +442,11 @@ trustwallet-assets/
                 structureStatus.className = 'status error';
                 structureStatus.textContent = '❌ Trust Wallet structure not accessible';
             }
-            
+
             // Update summary
             let summaryText = '📊 <strong>Trust Wallet Assets Summary:</strong><br>';
             let summaryClass = 'status info';
-            
+
             if (testResults.structure && testResults.integration) {
                 summaryClass = 'status success';
                 summaryText += `
@@ -428,7 +473,7 @@ trustwallet-assets/
                     📋 Check URL accessibility and file structure
                 `;
             }
-            
+
             summaryStatus.className = summaryClass;
             summaryStatus.innerHTML = summaryText;
         }
@@ -442,4 +487,5 @@ trustwallet-assets/
         });
     </script>
 </body>
+
 </html>

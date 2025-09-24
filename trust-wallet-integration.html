@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔸 Trust Wallet USDT.z Integration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo-display {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo-display img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .trust-info {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            color: white;
+            text-align: left;
+        }
+
+        .trust-info h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3em;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .info-value {
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            font-size: 0.9em;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn.trust {
+            background: linear-gradient(45deg, #3375bb, #2c5aa0);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(45deg, #3742fa, #2f3542);
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1em;
+            display: none;
+        }
+
+        .status.success {
+            background: rgba(46, 204, 113, 0.3);
+            color: #27ae60;
+            border: 1px solid rgba(46, 204, 113, 0.5);
+        }
+
+        .status.error {
+            background: rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.5);
+        }
+
+        .status.loading {
+            background: rgba(241, 196, 15, 0.3);
+            color: #f39c12;
+            border: 1px solid rgba(241, 196, 15, 0.5);
+        }
+
+        .urls-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .urls-section h4 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .url-item {
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+            color: rgba(255,255,255,0.9);
+            word-break: break-all;
+            background: rgba(0,0,0,0.2);
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .info-value {
+                max-width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-display">
+            <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo" id="logoImage">
+        </div>
+        
+        <h1>Trust Wallet Integration</h1>
+        <div class="subtitle">USDT.z Token Setup</div>
+
+        <div class="trust-info">
+            <h3>🔸 Trust Wallet Token Information</h3>
+            <div class="info-item">
+                <span class="info-label">Token Name:</span>
+                <span class="info-value">USDT.z</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Symbol:</span>
+                <span class="info-value">USDTz</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Contract:</span>
+                <span class="info-value">0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Network:</span>
+                <span class="info-value">Smart Chain (BNB)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Decimals:</span>
+                <span class="info-value">18</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn trust" onclick="addToTrustWallet()">
+                🔸 Add to Trust Wallet
+            </button>
+            <button class="btn secondary" onclick="testLogoUrls()">
+                🔍 Test Logo URLs
+            </button>
+            <button class="btn secondary" onclick="copyTokenData()">
+                📋 Copy Token Data
+            </button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="urls-section">
+            <h4>📡 Logo URLs (Multiple Fallbacks)</h4>
+            <div class="url-item" id="url1">Primary: https://khanitohm.github.io/usdtz-assets/assets/logo256.png</div>
+            <div class="url-item" id="url2">Trust Wallet: https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png</div>
+            <div class="url-item" id="url3">Backup: https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png</div>
+        </div>
+    </div>
+
+    <script>
+        const tokenData = {
+            name: 'USDT.z',
+            symbol: 'USDTz',
+            address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+            decimals: 18,
+            logoUrls: [
+                'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+                'https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png',
+                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png'
+            ]
+        };
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+            
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 5000);
+        }
+
+        async function addToTrustWallet() {
+            showStatus('🔄 Adding token to Trust Wallet...', 'loading');
+            
+            // Trust Wallet uses the same API as MetaMask
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    for (let i = 0; i < tokenData.logoUrls.length; i++) {
+                        try {
+                            await window.ethereum.request({
+                                method: 'wallet_watchAsset',
+                                params: {
+                                    type: 'ERC20',
+                                    options: {
+                                        address: tokenData.address,
+                                        symbol: tokenData.symbol,
+                                        decimals: tokenData.decimals,
+                                        image: tokenData.logoUrls[i]
+                                    }
+                                }
+                            });
+                            showStatus('✅ USDT.z token added to Trust Wallet successfully!', 'success');
+                            return;
+                        } catch (error) {
+                            console.log(`Logo URL ${i + 1} failed, trying next...`);
+                        }
+                    }
+                    throw new Error('All logo URLs failed');
+                } catch (error) {
+                    console.error('Error adding token:', error);
+                    showStatus('❌ Please add token manually: Contract 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21', 'error');
+                }
+            } else {
+                showStatus('📱 Please open this page in Trust Wallet browser or install Trust Wallet', 'error');
+                // Provide instructions for manual addition
+                setTimeout(() => {
+                    alert('Manual Instructions:\\n\\n1. Open Trust Wallet\\n2. Go to Settings > Manage Tokens\\n3. Add Custom Token\\n4. Network: Smart Chain\\n5. Contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21\\n6. Name: USDT.z\\n7. Symbol: USDTz\\n8. Decimals: 18');
+                }, 2000);
+            }
+        }
+
+        async function testLogoUrls() {
+            showStatus('🔍 Testing logo URLs...', 'loading');
+            
+            for (let i = 0; i < tokenData.logoUrls.length; i++) {
+                const urlElement = document.getElementById(`url${i + 1}`);
+                try {
+                    const response = await fetch(tokenData.logoUrls[i]);
+                    if (response.ok) {
+                        urlElement.style.background = 'rgba(46, 204, 113, 0.3)';
+                        urlElement.style.border = '1px solid rgba(46, 204, 113, 0.5)';
+                    } else {
+                        throw new Error('Failed to load');
+                    }
+                } catch (error) {
+                    urlElement.style.background = 'rgba(231, 76, 60, 0.3)';
+                    urlElement.style.border = '1px solid rgba(231, 76, 60, 0.5)';
+                }
+            }
+            
+            showStatus('✅ Logo URL test completed!', 'success');
+        }
+
+        function copyTokenData() {
+            const data = `USDT.z Token Information:
+Name: ${tokenData.name}
+Symbol: ${tokenData.symbol}
+Contract: ${tokenData.address}
+Network: Smart Chain (BNB)
+Decimals: ${tokenData.decimals}
+
+Manual Trust Wallet Setup:
+1. Open Trust Wallet
+2. Settings > Manage Tokens
+3. Add Custom Token
+4. Network: Smart Chain
+5. Paste contract address: ${tokenData.address}
+6. Token will auto-populate with logo
+
+Logo URLs:
+${tokenData.logoUrls.join('\\n')}`;
+
+            navigator.clipboard.writeText(data).then(() => {
+                showStatus('✅ Token data copied to clipboard!', 'success');
+            }).catch(() => {
+                showStatus('❌ Could not copy to clipboard', 'error');
+            });
+        }
+
+        // Auto-test logo URLs on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testLogoUrls();
+            }, 2000);
+        });
+
+        // Test if logo loads correctly
+        document.getElementById('logoImage').onerror = function() {
+            // Try backup logo URLs
+            const backupUrls = [
+                'https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png',
+                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png'
+            ];
+            
+            for (let url of backupUrls) {
+                this.src = url;
+                break;
+            }
+        };
+    </script>
+</body>
+</html>
