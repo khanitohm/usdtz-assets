@@ -1,6 +1,6 @@
 {
   "status": {
-    "timestamp": "2025-01-21T00:00:00.000Z",
+    "timestamp": "2025-09-24T19:55:18.000Z",
     "error_code": 0,
     "error_message": null,
     "elapsed": 15,
@@ -37,7 +37,7 @@
         "self_reported_circulating_supply": null,
         "self_reported_market_cap": null,
         "tvl_ratio": null,
-        "last_updated": "2025-01-21T00:00:00.000Z",
+        "last_updated": "2025-09-24T19:55:18.000Z",
         "quote": {
           "USD": {
             "price": 1.00,

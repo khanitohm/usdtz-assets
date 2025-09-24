@@ -3,6 +3,7 @@
     "symbol": "USDTz",
     "type": "BEP20",
     "decimals": 18,
+    "logoURI": "https://khanitohm.github.io/usdtz-assets/assets/logo256.png",
     "description": "USDT.z is a BEP20 token deployed on BNB Smart Chain.",
     "website": "https://khanitohm.github.io/usdtz-assets/",
     "explorer": "https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
@@ -24,7 +25,7 @@
     "price": {
         "provider": "stablecoin",
         "usd": 1.00,
-        "last_updated": "2025-01-21T12:00:00Z"
+        "last_updated": "2025-09-24T19:55:18Z"
     },
     "market_data": {
         "market_cap_usd": 9000000,

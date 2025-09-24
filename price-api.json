@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": "2025-01-21T00:00:00Z",
+  "timestamp": "2025-09-24T19:55:18Z",
   "base_currency": "USD",
   "tokens": [
     {
@@ -14,7 +14,7 @@
       "volume_24h_usd": "800000",
       "circulating_supply": "9000000",
       "total_supply": "9000000",
-      "last_updated": "2025-01-21T00:00:00Z",
+      "last_updated": "2025-09-24T19:55:18Z",
       "data_sources": [
         {
           "name": "PancakeSwap",

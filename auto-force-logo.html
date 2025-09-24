@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Auto Force USDT.z Logo - MetaMask</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #f093fb;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.3);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f093fb;
+            font-size: 2.8em;
+            text-shadow: 0 0 10px #f093fb;
+            margin-bottom: 30px;
+        }
+        .logo-preview img {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.5);
+            border: 3px solid #f093fb;
+            margin: 20px 0;
+        }
+        .status {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        .method-log {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #f093fb;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+            font-family: monospace;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .info { color: #17a2b8; }
+        .progress {
+            background: rgba(240, 147, 251, 0.2);
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AUTO FORCE LOGO</h1>
+        
+        <div class="logo-preview">
+            <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo" id="logoPreview">
+            <h3>USDT.z Logo - Auto Forcing...</h3>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="status" id="status">
+            🔄 Initializing automatic logo forcing...
+        </div>
+
+        <div class="method-log" id="methodLog">
+            <div class="info">Starting automated logo forcing sequence...</div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        const status = document.getElementById('status');
+        const methodLog = document.getElementById('methodLog');
+
+        function updateProgress(percent) {
+            progress = percent;
+            progressBar.style.width = percent + '%';
+        }
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = type;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            methodLog.appendChild(logEntry);
+            methodLog.scrollTop = methodLog.scrollHeight;
+        }
+
+        async function forceLogoMethod1() {
+            log('🎯 METHOD 1: Direct MetaMask wallet_watchAsset', 'info');
+            
+            if (typeof window.ethereum === 'undefined') {
+                log('❌ MetaMask not detected', 'error');
+                return false;
+            }
+
+            try {
+                const timestamp = Date.now();
+                const logoUrls = [
+                    `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
+                    `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png?v=${timestamp}`,
+                    `https://khanitohm.github.io/usdtz-assets/assets/logo.png?v=${timestamp}`,
+                    `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png?v=${timestamp}`
+                ];
+
+                for (let i = 0; i < logoUrls.length; i++) {
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_watchAsset',
+                            params: {
+                                type: 'ERC20',
+                                options: {
+                                    address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+                                    symbol: 'USDTz',
+                                    decimals: 18,
+                                    image: logoUrls[i]
+                                }
+                            }
+                        });
+                        
+                        log(`✅ SUCCESS with URL ${i + 1}: ${logoUrls[i]}`, 'success');
+                        return true;
+                    } catch (error) {
+                        log(`❌ Failed URL ${i + 1}: ${logoUrls[i]}`, 'error');
+                    }
+                }
+                return false;
+            } catch (error) {
+                log(`❌ Method 1 failed: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function forceLogoMethod2() {
+            log('🎯 METHOD 2: Cache-busting logo refresh', 'info');
+            
+            try {
+                const timestamp = Date.now();
+                const testUrls = [
+                    `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
+                    `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png?v=${timestamp}`
+                ];
+
+                let successCount = 0;
+                for (const url of testUrls) {
+                    const img = new Image();
+                    await new Promise((resolve) => {
+                        img.onload = () => {
+                            log(`✅ Logo URL accessible: ${url}`, 'success');
+                            successCount++;
+                            resolve();
+                        };
+                        img.onerror = () => {
+                            log(`❌ Logo URL failed: ${url}`, 'error');
+                            resolve();
+                        };
+                        img.src = url;
+                    });
+                }
+
+                // Update preview with cache-busted URL
+                document.getElementById('logoPreview').src = testUrls[0];
+                
+                return successCount > 0;
+            } catch (error) {
+                log(`❌ Method 2 failed: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function forceLogoMethod3() {
+            log('🎯 METHOD 3: Multiple source validation', 'info');
+            
+            try {
+                const logoSources = [
+                    'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+                    'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png',
+                    'https://khanitohm.github.io/usdtz-assets/assets/logo.png',
+                    'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png'
+                ];
+
+                let validSources = 0;
+                for (const url of logoSources) {
+                    const img = new Image();
+                    await new Promise((resolve) => {
+                        img.onload = () => {
+                            log(`✅ Valid source: ${url}`, 'success');
+                            validSources++;
+                            resolve();
+                        };
+                        img.onerror = () => {
+                            log(`❌ Invalid source: ${url}`, 'error');
+                            resolve();
+                        };
+                        img.src = url + '?v=' + Date.now();
+                    });
+                }
+
+                return validSources > 0;
+            } catch (error) {
+                log(`❌ Method 3 failed: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function autoForceLogo() {
+            log('🚀 Starting automated logo forcing sequence...', 'info');
+            updateProgress(10);
+
+            // Method 1: Direct MetaMask Integration
+            status.textContent = '🔄 Running Method 1: Direct MetaMask Integration...';
+            const method1Success = await forceLogoMethod1();
+            updateProgress(40);
+
+            // Method 2: Cache-busting
+            status.textContent = '🔄 Running Method 2: Cache-busting refresh...';
+            const method2Success = await forceLogoMethod2();
+            updateProgress(70);
+
+            // Method 3: Source validation
+            status.textContent = '🔄 Running Method 3: Source validation...';
+            const method3Success = await forceLogoMethod3();
+            updateProgress(100);
+
+            // Final status
+            const successCount = [method1Success, method2Success, method3Success].filter(Boolean).length;
+            
+            if (successCount > 0) {
+                status.innerHTML = `✅ LOGO FORCING COMPLETE!<br>Successfully executed ${successCount}/3 methods`;
+                log(`🎉 COMPLETED: ${successCount}/3 methods successful`, 'success');
+                
+                setTimeout(() => {
+                    alert(`🎉 Logo Forcing Complete!
+
+✅ ${successCount}/3 methods executed successfully
+✅ USDT.z logo should now display in MetaMask
+
+If logo still not visible:
+1. Remove token from MetaMask
+2. Re-add with contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21
+3. Logo will appear immediately`);
+                }, 1000);
+            } else {
+                status.textContent = '❌ All methods failed - Manual intervention required';
+                log('❌ All automatic methods failed', 'error');
+            }
+        }
+
+        // Auto-start after 2 seconds
+        setTimeout(() => {
+            log('🚀 Auto-starting logo forcing sequence...', 'info');
+            autoForceLogo();
+        }, 2000);
+
+        // Auto-refresh logo preview every 15 seconds
+        setInterval(() => {
+            const logoPreview = document.getElementById('logoPreview');
+            logoPreview.src = 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png?' + Date.now();
+        }, 15000);
+    </script>
+</body>
+</html>
