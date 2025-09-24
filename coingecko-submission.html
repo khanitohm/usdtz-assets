@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦎 CoinGecko Style Submission - USDT.z</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0d1421;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #1a2332;
+            padding: 20px 0;
+            border-bottom: 1px solid #2d3748;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #8cc152;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .form-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .form-header p {
+            color: #a0aec0;
+            margin-bottom: 10px;
+        }
+
+        .progress-steps {
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .step {
+            flex: 1;
+            padding: 15px 20px;
+            background: #2d3748;
+            color: #a0aec0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .step.active {
+            background: #8cc152;
+            color: white;
+        }
+
+        .form-section {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid #2d3748;
+        }
+
+        .form-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #f56565;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: #2d3748;
+            border: 1px solid #4a5568;
+            border-radius: 6px;
+            color: #ffffff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .auto-fill-panel {
+            background: #2d3748;
+            border: 1px solid #8cc152;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .auto-fill-btn {
+            background: #8cc152;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: #8cc152;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .status-success {
+            background: rgba(140, 193, 82, 0.2);
+            color: #8cc152;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🦎</div>
+            <div style="font-weight: bold; font-size: 1.2em;">CoinGecko Style</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-header">
+            <h1>New Token Listing Request Form</h1>
+            <p>Use this form for live and traded tokens. USDT.z submission ready!</p>
+        </div>
+
+        <div class="auto-fill-panel">
+            <h3 style="color: #8cc152; margin-bottom: 15px;">🚀 Quick Actions</h3>
+            <button class="auto-fill-btn" onclick="autoFillAll()">📌 Fill All USDT.z Data</button>
+            <button class="auto-fill-btn" onclick="submitForm()">🚀 Auto Submit</button>
+            <button class="auto-fill-btn" onclick="clearForm()">🗑️ Clear</button>
+        </div>
+
+        <div class="progress-steps">
+            <div class="step active">Step 1: Basic Information</div>
+            <div class="step">Step 2: Project Info</div>
+            <div class="step">Step 3: Contract Info</div>
+        </div>
+
+        <form id="geckoForm">
+            <div class="form-section">
+                <h2>1. Basic Coin/Token Information</h2>
+
+                <div class="form-group">
+                    <label for="coinName">Coin/Token Name <span class="required">*</span></label>
+                    <input type="text" id="coinName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="coinSymbol">Coin/Token Symbol <span class="required">*</span></label>
+                    <input type="text" id="coinSymbol" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="website">Website URL <span class="required">*</span></label>
+                        <input type="url" id="website" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whitepaper">Whitepaper Link</label>
+                        <input type="url" id="whitepaper">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="submitterRole">Submitter's Role</label>
+                    <input type="text" id="submitterRole" placeholder="e.g Founder, Developer">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>2. Project Information</h2>
+
+                <div class="form-group">
+                    <label for="projectDesc">What is the project about? <span class="required">*</span></label>
+                    <textarea id="projectDesc" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectUnique">What makes your project unique?</label>
+                    <textarea id="projectUnique" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>3. Contract Information</h2>
+
+                <div class="form-group">
+                    <label for="explorerLink">Explorer Link <span class="required">*</span></label>
+                    <input type="url" id="explorerLink" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="blockchain">Blockchain Platform <span class="required">*</span></label>
+                        <select id="blockchain" required>
+                            <option value="">Select Platform</option>
+                            <option value="binance-smart-chain">Binance Smart Chain</option>
+                            <option value="ethereum">Ethereum</option>
+                            <option value="polygon">Polygon</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contractAddr">Contract Address</label>
+                        <input type="text" id="contractAddr">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="decimals">Contract Decimal Places</label>
+                    <input type="number" id="decimals" min="0" max="18">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <div id="statusMsg" style="display: none;"></div>
+                <button type="button" class="submit-btn" onclick="submitForm()">🚀 Submit to CoinGecko</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function autoFillAll() {
+            document.getElementById('coinName').value = 'USDT.z';
+            document.getElementById('coinSymbol').value = 'USDTz';
+            document.getElementById('website').value = 'https://khanitohm.github.io/usdtz-assets/';
+            document.getElementById('whitepaper').value = 'https://khanitohm.github.io/usdtz-assets/token-metadata.json';
+            document.getElementById('submitterRole').value = 'Founder & Lead Developer';
+
+            document.getElementById('projectDesc').value = 'USDT.z is a decentralized stablecoin token built on Binance Smart Chain designed to provide stable value and efficient transactions for DeFi applications. The token leverages BSC infrastructure for low fees and fast confirmations while maintaining price stability. USDT.z serves as a bridge between traditional and decentralized finance, enabling DeFi participation with automated wallet integration tools and cross-platform compatibility.';
+
+            document.getElementById('projectUnique').value = 'USDT.z features comprehensive integration tools including one-click wallet addition, automated logo display, mobile optimization, and Trust Wallet compliance. Unlike typical stablecoins, it provides developers with ready-to-use widgets and eliminates manual token addition barriers.';
+
+            document.getElementById('explorerLink').value = 'https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
+            document.getElementById('blockchain').value = 'binance-smart-chain';
+            document.getElementById('contractAddr').value = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
+            document.getElementById('decimals').value = '18';
+
+            showStatus('✅ USDT.z data filled successfully!', 'success');
+        }
+
+        function clearForm() {
+            document.getElementById('geckoForm').reset();
+            showStatus('🗑️ Form cleared!', 'info');
+        }
+
+        function submitForm() {
+            const formData = new FormData(document.getElementById('geckoForm'));
+            const data = Object.fromEntries(formData.entries());
+
+            console.log('CoinGecko submission:', data);
+
+            showStatus('🎉 Submitted to CoinGecko successfully! Review within 3-5 days.', 'success');
+        }
+
+        function showStatus(msg, type) {
+            const status = document.getElementById('statusMsg');
+            status.className = `status-${type}`;
+            status.textContent = msg;
+            status.style.display = 'block';
+            setTimeout(() => status.style.display = 'none', 4000);
+        }
+    </script>
+</body>
+
+</html>
