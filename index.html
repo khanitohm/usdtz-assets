@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USDT.z Token - BSC</title>
+    
+    <!-- Meta tags for better sharing -->
+    <meta name="description" content="USDT.z (USDTz) - BEP20 token on BNB Smart Chain. Add to MetaMask and Trust Wallet.">
+    <meta property="og:title" content="USDT.z Token - BSC">
+    <meta property="og:description" content="USDT.z (USDTz) - BEP20 token on BNB Smart Chain">
+    <meta property="og:image" content="https://khanitohm.github.io/usdtz-assets/assets/logo256.png">
+    <meta property="og:url" content="https://khanitohm.github.io/usdtz-assets/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://khanitohm.github.io/usdtz-assets/assets/logo256.png">
+    
+    <!-- Preload logo for faster loading -->
+    <link rel="preload" href="assets/logo256.png" as="image">
+    <link rel="icon" href="assets/logo256.png" type="image/png">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -210,32 +223,55 @@
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             if (isMobile) {
-                // Try Trust Wallet deep link
-                const trustWalletUrl = `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}`;
+                // Try multiple Trust Wallet methods
+                const methods = [
+                    // Method 1: Trust Wallet deep link with logo
+                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrl)}`,
+                    // Method 2: Standard deep link
+                    `https://link.trustwallet.com/add_asset?asset=c56_t${contractAddress}`,
+                    // Method 3: Trust Wallet browser
+                    `trust://add_asset?asset=c56_t${contractAddress}&logo=${encodeURIComponent(logoUrl)}`
+                ];
                 
-                // Create a temporary link and click it
+                // Try first method
                 const link = document.createElement('a');
-                link.href = trustWalletUrl;
+                link.href = methods[0];
                 link.target = '_blank';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
                 
-                // Show success message
+                // Show enhanced instructions
                 setTimeout(() => {
-                    alert('🛡️ Opening Trust Wallet... If Trust Wallet doesn\'t open, please add the token manually:\n\nContract: ' + contractAddress + '\nSymbol: ' + symbol + '\nDecimals: ' + decimals);
+                    const mobileInstructions = `🛡️ Opening Trust Wallet...\n\n` +
+                        `If Trust Wallet doesn't open automatically:\n\n` +
+                        `📱 Manual Steps:\n` +
+                        `1. Open Trust Wallet app\n` +
+                        `2. Tap "+" (top right)\n` +
+                        `3. Select "Smart Chain" network\n` +
+                        `4. Paste contract: ${contractAddress}\n` +
+                        `5. Token should auto-fill with logo!\n\n` +
+                        `💡 Logo URL: ${logoUrl}\n\n` +
+                        `✅ PR #33633 pending for auto-listing!`;
+                    
+                    alert(mobileInstructions);
                 }, 1000);
             } else {
-                // Desktop - show manual instructions
-                const instructions = `🛡️ To add USDT.z to Trust Wallet:\n\n` +
-                    `1. Open Trust Wallet app on your mobile device\n` +
+                // Desktop - enhanced instructions with logo info
+                const instructions = `🛡️ Add USDT.z to Trust Wallet:\n\n` +
+                    `📱 On your mobile device:\n` +
+                    `1. Open Trust Wallet app\n` +
                     `2. Go to "Tokens" tab\n` +
-                    `3. Tap the "+" button (top right)\n` +
-                    `4. Search for "USDT.z" or paste contract address:\n` +
+                    `3. Tap "+" button (top right)\n` +
+                    `4. Select "Smart Chain" network\n` +
+                    `5. Paste contract address:\n` +
                     `   ${contractAddress}\n` +
-                    `5. Select "Smart Chain" network\n` +
-                    `6. Tap "Add"\n\n` +
-                    `✅ Our PR #33633 is pending approval for automatic listing!`;
+                    `6. Token info should auto-fill!\n\n` +
+                    `🖼️ If logo doesn't appear:\n` +
+                    `   Logo URL: ${logoUrl}\n\n` +
+                    `✅ Our PR #33633 is pending approval!\n` +
+                    `   Once approved, logo will show automatically.\n\n` +
+                    `💰 Balance will display like other tokens once added.`;
                 
                 alert(instructions);
                 
