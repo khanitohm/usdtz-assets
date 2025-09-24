@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             min-height: 100vh;
             color: white;
         }
+
         .container {
             background: rgba(0, 0, 0, 0.9);
             border: 2px solid #f093fb;
@@ -22,6 +24,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         h1 {
             color: #f093fb;
             text-align: center;
@@ -29,6 +32,7 @@
             font-size: 2.5em;
             text-shadow: 0 0 10px #f093fb;
         }
+
         .force-button {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
@@ -43,14 +47,17 @@
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
         }
+
         .force-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(240, 147, 251, 0.6);
         }
+
         .logo-preview {
             text-align: center;
             margin: 30px 0;
         }
+
         .logo-preview img {
             width: 128px;
             height: 128px;
@@ -58,6 +65,7 @@
             box-shadow: 0 10px 30px rgba(240, 147, 251, 0.5);
             border: 3px solid #f093fb;
         }
+
         .status {
             background: rgba(40, 167, 69, 0.2);
             border: 1px solid #28a745;
@@ -67,6 +75,7 @@
             text-align: center;
             display: none;
         }
+
         .method {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -74,6 +83,7 @@
             margin: 20px 0;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .code {
             background: #000;
             color: #00ff00;
@@ -86,10 +96,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🔥 Force Logo Display</h1>
-        
+
         <div class="logo-preview">
             <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo" id="logoPreview">
             <h3>USDT.z Logo</h3>
@@ -139,23 +150,23 @@
         function forceLogoDisplay() {
             const button = document.querySelector('.force-button');
             const status = document.getElementById('status');
-            
+
             button.textContent = '🔄 Forcing Logo Display...';
             button.disabled = true;
-            
+
             // Execute all methods simultaneously
             setTimeout(() => {
                 addToMetaMaskForced();
                 copyBypassUrl();
                 tryAllLogoSources();
-                
+
                 status.style.display = 'block';
                 button.textContent = '✅ Logo Force Complete!';
-                
+
                 setTimeout(() => {
                     alert('🎉 Logo Force Applied!\n\n✅ MetaMask should now display USDT.z logo\n✅ Cache-bypass URL copied\n✅ Multiple sources tried\n\nIf logo still not visible:\n1. Remove token from MetaMask\n2. Re-add with contract address\n3. Logo will appear immediately');
                 }, 1000);
-                
+
             }, 2000);
         }
 
@@ -186,10 +197,10 @@
                                     }
                                 }
                             });
-                            
+
                             console.log(`✅ Logo added with URL ${i + 1}: ${logoUrls[i]}`);
                             break; // Success, exit loop
-                            
+
                         } catch (error) {
                             console.log(`❌ Logo URL ${i + 1} failed: ${logoUrls[i]}`);
                             if (i === logoUrls.length - 1) {
@@ -197,9 +208,9 @@
                             }
                         }
                     }
-                    
+
                     alert('✅ USDT.z token added to MetaMask with forced logo!');
-                    
+
                 } catch (error) {
                     console.error('Error adding token to MetaMask:', error);
                     alert('❌ Error adding token to MetaMask. Please add manually with contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21');
@@ -212,13 +223,13 @@
         function copyBypassUrl() {
             const timestamp = Date.now();
             const bypassUrl = `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`;
-            
+
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(bypassUrl).then(() => {
                     console.log('✅ Cache-bypass URL copied');
                 });
             }
-            
+
             // Update display
             document.getElementById('timestamp').textContent = timestamp;
         }
@@ -233,7 +244,7 @@
             ];
 
             console.log('🔄 Testing all logo sources...');
-            
+
             logoSources.forEach((url, index) => {
                 const img = new Image();
                 img.onload = () => {
@@ -267,4 +278,5 @@
         }, 3000);
     </script>
 </body>
+
 </html>

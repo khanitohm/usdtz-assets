@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             color: white;
             text-align: center;
         }
+
         .container {
             background: rgba(0, 0, 0, 0.95);
             border: 3px solid #f093fb;
@@ -23,12 +25,14 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         h1 {
             color: #f093fb;
             font-size: 2.5em;
             text-shadow: 0 0 10px #f093fb;
             margin-bottom: 30px;
         }
+
         .logo-preview img {
             width: 128px;
             height: 128px;
@@ -37,6 +41,7 @@
             border: 3px solid #f093fb;
             margin: 20px 0;
         }
+
         .force-button {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
@@ -51,16 +56,18 @@
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
         }
+
         .force-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(240, 147, 251, 0.6);
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🔥 FORCE LOGO</h1>
-        
+
         <div class="logo-preview">
             <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo">
             <h3>USDT.z Logo</h3>
@@ -76,7 +83,7 @@
             const button = document.querySelector('.force-button');
             button.textContent = '🔄 Forcing Logo...';
             button.disabled = true;
-            
+
             if (typeof window.ethereum !== 'undefined') {
                 try {
                     const timestamp = Date.now();
@@ -100,18 +107,18 @@
                                     }
                                 }
                             });
-                            
+
                             button.textContent = '✅ LOGO FORCED!';
                             alert(`🎉 SUCCESS! Logo forced with URL: ${logoUrls[i]}`);
                             return;
-                            
+
                         } catch (error) {
                             console.log(`Logo URL ${i + 1} failed, trying next...`);
                         }
                     }
-                    
+
                     throw new Error('All logo URLs failed');
-                    
+
                 } catch (error) {
                     button.textContent = '❌ Force Failed';
                     alert('❌ Could not force logo. Please add token manually.');
@@ -128,4 +135,5 @@
         }, 2000);
     </script>
 </body>
+
 </html>
