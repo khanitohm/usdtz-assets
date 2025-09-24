@@ -18,15 +18,15 @@
       "tags": ["stablecoin", "defi"],
       "extensions": {
         "price": {
-          "usd": "2.85",
-          "provider": "pancakeswap",
+          "usd": "1.00",
+          "provider": "stablecoin",
           "last_updated": "2025-01-21T12:00:00Z"
         },
         "market_data": {
-          "market_cap_usd": "25650000",
-          "volume_24h_usd": "1200000",
-          "price_change_24h": "2.15",
-          "price_change_7d": "8.75"
+          "market_cap_usd": "9000000",
+          "volume_24h_usd": "800000",
+          "price_change_24h": "0.00",
+          "price_change_7d": "0.00"
         },
         "coingecko_id": "usdtz",
         "coinmarketcap_id": "99999",
