@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT.z - Decentralized Stablecoin on Binance Smart Chain</title>
+    <meta name="description" content="USDT.z is a decentralized stablecoin token on Binance Smart Chain providing stable value and DeFi utility.">
+    <meta name="keywords" content="USDT.z, USDTz, stablecoin, BSC, Binance Smart Chain, DeFi, cryptocurrency">
+    <link rel="icon" type="image/png" href="https://khanitohm.github.io/usdtz-assets/assets/logo256.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(45deg, #3742fa, #2f3542);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 40px 0;
+            padding: 60px 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-content {
+            color: white;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature h4 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .token-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card h5 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo">
+                    <h1>USDT.z</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#tokenomics">Tokenomics</a></li>
+                        <li><a href="#integration">Integration</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>USDT.z Stablecoin</h2>
+                <p>Decentralized stable value token on Binance Smart Chain (BSC)</p>
+                <div class="cta-buttons">
+                    <a href="https://khanitohm.github.io/usdtz-assets/auto-add-token.html" class="btn">Add to Wallet</a>
+                    <a href="#tokenomics" class="btn secondary">View Details</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h3>About USDT.z</h3>
+                    <p>USDT.z is a decentralized stablecoin built on Binance Smart Chain, designed to provide stable value and seamless DeFi integration. Our token maintains stability while offering the flexibility and efficiency of BSC network.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h3>Key Features</h3>
+                    <div class="features">
+                        <div class="feature">
+                            <h4>🔒 Stable Value</h4>
+                            <p>Designed to maintain stable value through market mechanisms and community governance.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>⚡ BSC Network</h4>
+                            <p>Built on Binance Smart Chain for fast transactions and low fees.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>🔗 DeFi Ready</h4>
+                            <p>Fully compatible with DeFi protocols and decentralized exchanges.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>🛡️ Secure</h4>
+                            <p>Audited smart contract with proven security standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tokenomics" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h3>Token Information</h3>
+                    <div class="token-info">
+                        <div class="info-card">
+                            <h5>Token Name</h5>
+                            <p>USDT.z</p>
+                        </div>
+                        <div class="info-card">
+                            <h5>Symbol</h5>
+                            <p>USDTz</p>
+                        </div>
+                        <div class="info-card">
+                            <h5>Contract Address</h5>
+                            <p>0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</p>
+                        </div>
+                        <div class="info-card">
+                            <h5>Decimals</h5>
+                            <p>18</p>
+                        </div>
+                        <div class="info-card">
+                            <h5>Network</h5>
+                            <p>Binance Smart Chain (BSC)</p>
+                        </div>
+                        <div class="info-card">
+                            <h5>Token Type</h5>
+                            <p>BEP20</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="integration" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h3>Wallet Integration</h3>
+                    <p>Add USDT.z to your wallet with one click using our automated integration tools.</p>
+                    <div class="cta-buttons">
+                        <a href="https://khanitohm.github.io/usdtz-assets/auto-add-token.html" class="btn">Auto Add Token</a>
+                        <a href="https://khanitohm.github.io/usdtz-assets/quick-add-widget.html" class="btn secondary">Quick Widget</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 USDT.z. Decentralized stablecoin on Binance Smart Chain.</p>
+            <p>Contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Auto-add token functionality
+        window.addTokenToWallet = async function() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+                                symbol: 'USDTz',
+                                decimals: 18,
+                                image: 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png'
+                            }
+                        }
+                    });
+                    alert('USDT.z token added successfully!');
+                } catch (error) {
+                    console.error('Error adding token:', error);
+                    alert('Error adding token. Please add manually.');
+                }
+            } else {
+                alert('Please install MetaMask or compatible wallet.');
+            }
+        };
+    </script>
+</body>
+</html>

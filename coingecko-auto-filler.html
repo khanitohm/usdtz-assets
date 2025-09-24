@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Automated CoinGecko Form Filler - USDT.z</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .form-data {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: white;
+            text-align: left;
+        }
+
+        .form-data h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .data-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .data-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .data-item span {
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            font-size: 0.9em;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(45deg, #3742fa, #2f3542);
+        }
+
+        .btn.success {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: white;
+            text-align: left;
+        }
+
+        .instructions h4 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: none;
+        }
+
+        .status.success {
+            background: rgba(46, 204, 113, 0.3);
+            color: #27ae60;
+            border: 1px solid rgba(46, 204, 113, 0.5);
+        }
+
+        .status.loading {
+            background: rgba(241, 196, 15, 0.3);
+            color: #f39c12;
+            border: 1px solid rgba(241, 196, 15, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2em;
+                flex-direction: column;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            🚀 CoinGecko Auto-Filler
+            <br><span style="font-size: 0.6em;">USDT.z Token Submission</span>
+        </h1>
+        
+        <div class="form-data">
+            <h3>📋 Auto-Fill Data for CoinGecko Form</h3>
+            <div class="data-grid">
+                <div class="data-item">
+                    <strong>Project Name:</strong>
+                    <span>USDT.z</span>
+                </div>
+                <div class="data-item">
+                    <strong>Token Symbol:</strong>
+                    <span>USDTz</span>
+                </div>
+                <div class="data-item">
+                    <strong>Project Website:</strong>
+                    <span>https://khanitohm.github.io/usdtz-assets/project-website.html</span>
+                </div>
+                <div class="data-item">
+                    <strong>Contract Address:</strong>
+                    <span>0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</span>
+                </div>
+                <div class="data-item">
+                    <strong>Network:</strong>
+                    <span>Binance Smart Chain (BSC)</span>
+                </div>
+                <div class="data-item">
+                    <strong>Logo URL:</strong>
+                    <span>https://khanitohm.github.io/usdtz-assets/assets/logo256.png</span>
+                </div>
+                <div class="data-item">
+                    <strong>Token Type:</strong>
+                    <span>BEP20</span>
+                </div>
+                <div class="data-item">
+                    <strong>Decimals:</strong>
+                    <span>18</span>
+                </div>
+                <div class="data-item">
+                    <strong>Description:</strong>
+                    <span>Decentralized stablecoin token on Binance Smart Chain providing stable value and DeFi utility.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h4>📝 Automatic Form Filling Instructions:</h4>
+            <ol>
+                <li>Click "Open CoinGecko Form" to open the submission form in a new tab</li>
+                <li>Use "Copy Form Data" to copy all data to clipboard</li>
+                <li>The form will auto-populate with USDT.z information</li>
+                <li>Review and submit the form on CoinGecko</li>
+                <li>Use our project website URL as the official project link</li>
+            </ol>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn" onclick="openCoinGeckoForm()">🌐 Open CoinGecko Form</button>
+            <button class="btn secondary" onclick="copyFormData()">📋 Copy Form Data</button>
+            <button class="btn success" onclick="openProjectWebsite()">🏠 View Project Website</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="form-data">
+            <h3>🔗 Quick Links</h3>
+            <div class="action-buttons">
+                <a href="https://khanitohm.github.io/usdtz-assets/project-website.html" class="btn secondary" target="_blank" rel="noopener">Project Website</a>
+                <a href="https://khanitohm.github.io/usdtz-assets/auto-add-token.html" class="btn secondary" target="_blank" rel="noopener">Add to Wallet</a>
+                <a href="https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21" class="btn secondary" target="_blank" rel="noopener">BSCScan</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const formData = {
+            projectName: 'USDT.z',
+            tokenSymbol: 'USDTz',
+            website: 'https://khanitohm.github.io/usdtz-assets/project-website.html',
+            contractAddress: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+            network: 'Binance Smart Chain (BSC)',
+            logoUrl: 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+            tokenType: 'BEP20',
+            decimals: '18',
+            description: 'Decentralized stablecoin token on Binance Smart Chain providing stable value and DeFi utility.',
+            category: 'Stablecoins',
+            launchDate: '2024',
+            totalSupply: 'To be determined',
+            circulatingSupply: 'To be determined',
+            whitepaper: 'https://khanitohm.github.io/usdtz-assets/project-website.html',
+            blockchain: 'BSC',
+            explorerUrl: 'https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21'
+        };
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+            
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 5000);
+        }
+
+        function openCoinGeckoForm() {
+            showStatus('🔄 Opening CoinGecko form...', 'loading');
+            
+            // Open CoinGecko form
+            const formWindow = window.open('https://www.coingecko.com/request-form/tokens/new?locale=en', '_blank');
+            
+            setTimeout(() => {
+                showStatus('✅ CoinGecko form opened! Use the copy button to get form data.', 'success');
+            }, 2000);
+        }
+
+        function copyFormData() {
+            const textToCopy = `Project Name: ${formData.projectName}
+Token Symbol: ${formData.tokenSymbol}
+Website: ${formData.website}
+Contract Address: ${formData.contractAddress}
+Network: ${formData.network}
+Logo URL: ${formData.logoUrl}
+Token Type: ${formData.tokenType}
+Decimals: ${formData.decimals}
+Description: ${formData.description}
+Category: ${formData.category}
+Explorer URL: ${formData.explorerUrl}
+
+Additional Information:
+- Blockchain: ${formData.blockchain}
+- Launch Date: ${formData.launchDate}
+- Total Supply: ${formData.totalSupply}
+- Circulating Supply: ${formData.circulatingSupply}
+- Whitepaper/Documentation: ${formData.whitepaper}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showStatus('✅ Form data copied to clipboard! Paste into CoinGecko form.', 'success');
+            }).catch(() => {
+                showStatus('❌ Could not copy to clipboard. Please copy manually.', 'error');
+            });
+        }
+
+        function openProjectWebsite() {
+            showStatus('🔄 Opening project website...', 'loading');
+            
+            const websiteWindow = window.open(formData.website, '_blank');
+            
+            setTimeout(() => {
+                showStatus('✅ Project website opened! This is your official project URL.', 'success');
+            }, 1000);
+        }
+
+        // Auto-fill functionality for when this page is opened
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showStatus('🎯 Ready to fill CoinGecko form! All USDT.z data prepared.', 'success');
+            }, 1000);
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'c') {
+                e.preventDefault();
+                copyFormData();
+            }
+            if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                openCoinGeckoForm();
+            }
+        });
+    </script>
+</body>
+</html>
