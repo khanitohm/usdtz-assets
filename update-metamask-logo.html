@@ -111,13 +111,13 @@
         <div class="step">
             <h3>📋 Current Status:</h3>
             <p>MetaMask ใช้ logo จาก URL นี้:</p>
-            <div class="code">https://khanitohm.github.io/usdtz-assets/assets/logo256.png</div>
+            <div class="code">https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png</div>
         </div>
 
         <div class="logo-preview">
             <div class="current-logo">
                 <h4>🖼️ Current Logo</h4>
-                <img src="assets/logo256.png" alt="Current USDT.z Logo" id="currentLogo">
+                <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="Current USDT.z Logo" id="currentLogo">
             </div>
             <div class="new-logo" id="newLogoPreview" style="display: none;">
                 <h4>✨ New Logo</h4>
@@ -257,7 +257,16 @@
                 
                 // Show success message
                 setTimeout(() => {
-                    alert(`🎉 Logo Updated Successfully!\n\n✅ New logo uploaded to GitHub Pages\n✅ MetaMask will display new logo\n✅ URL: https://khanitohm.github.io/usdtz-assets/assets/logo256.png\n\nTo see changes in MetaMask:\n1. Remove USDT.z token\n2. Re-add with contract address\n3. New logo will appear automatically`);
+                    alert(`🎉 Logo Updated Successfully!
+
+✅ New logo uploaded to GitHub Pages
+✅ MetaMask will display new logo
+✅ URL: https://khanitohm.github.io/usdtz-assets/https://khanitohm.github.io/usdtz-assets/assets/logo256.png
+
+To see changes in MetaMask:
+1. Remove USDT.z token
+2. Re-add with contract address
+3. New logo will appear automatically`);
                     
                     // Refresh current logo preview
                     const currentLogo = document.getElementById('currentLogo');
@@ -271,7 +280,7 @@
         // Auto-refresh current logo every 30 seconds to check for updates
         setInterval(() => {
             const currentLogo = document.getElementById('currentLogo');
-            currentLogo.src = 'assets/logo256.png?' + new Date().getTime();
+            currentLogo.src = 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png?' + new Date().getTime();
         }, 30000);
     </script>
 </body>
