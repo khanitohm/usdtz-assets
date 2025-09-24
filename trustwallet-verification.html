@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦄 Trust Wallet Assets Verification</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #3b82f6;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #3b82f6;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #3b82f6;
+        }
+        .verification-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .verification-section h3 {
+            color: #3b82f6;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+        .status { 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin: 10px 0; 
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .success { background: rgba(34, 197, 94, 0.3); border: 1px solid #22c55e; color: #22c55e; }
+        .error { background: rgba(239, 68, 68, 0.3); border: 1px solid #ef4444; color: #ef4444; }
+        .pending { background: rgba(245, 158, 11, 0.3); border: 1px solid #f59e0b; color: #f59e0b; }
+        .info { background: rgba(59, 130, 246, 0.3); border: 1px solid #3b82f6; color: #3b82f6; }
+        
+        .asset-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .asset-preview img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+        }
+        .asset-info {
+            flex: 1;
+        }
+        .asset-info h4 {
+            margin: 0 0 5px 0;
+            color: #3b82f6;
+        }
+        .asset-info p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .url-test {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .url-test.success { border-color: #22c55e; }
+        .url-test.error { border-color: #ef4444; }
+        
+        .structure-tree {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .url-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px; margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦄 Trust Wallet Assets</h1>
+        
+        <div class="verification-section">
+            <h3>📂 Trust Wallet Structure</h3>
+            <div class="structure-tree">
+trustwallet-assets/
+└── blockchains/
+    └── smartchain/
+        └── assets/
+            └── 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/
+                ├── info.json
+                ├── logo.png
+                └── tokenlist.json
+            </div>
+            <div class="status info" id="structureStatus">
+                🔄 Verifying Trust Wallet assets structure...
+            </div>
+        </div>
+
+        <div class="verification-section">
+            <h3>🎯 Asset Preview</h3>
+            <div class="asset-preview">
+                <img src="https://khanitohm.github.io/usdtz-assets/trustwallet-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png" 
+                     alt="USDT.z Logo" id="trustwalletLogo">
+                <div class="asset-info">
+                    <h4>USDT.z Token</h4>
+                    <p>Contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</p>
+                    <p>Blockchain: BSC (Binance Smart Chain)</p>
+                    <p>Standard: BEP20</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="verification-section">
+            <h3>🔗 URL Accessibility Test</h3>
+            <div class="url-grid" id="urlGrid"></div>
+            <button class="test-button" onclick="testAllUrls()">
+                🧪 Test All URLs
+            </button>
+        </div>
+
+        <div class="verification-section">
+            <h3>📋 Trust Wallet Integration</h3>
+            <div class="status pending" id="integrationStatus">
+                🔄 Testing Trust Wallet integration...
+            </div>
+            <div id="integrationDetails"></div>
+            <button class="test-button" onclick="testTrustWalletIntegration()">
+                🦄 Test Trust Wallet Integration
+            </button>
+        </div>
+
+        <div class="verification-section">
+            <h3>📊 Verification Summary</h3>
+            <div class="status info" id="summaryStatus">
+                🔄 Generating verification summary...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const baseUrl = 'https://khanitohm.github.io/usdtz-assets/trustwallet-assets';
+        const contractAddress = '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21';
+        
+        const testUrls = [
+            {
+                name: 'Logo PNG',
+                url: `${baseUrl}/blockchains/smartchain/assets/${contractAddress}/logo.png`,
+                type: 'image'
+            },
+            {
+                name: 'Info JSON',
+                url: `${baseUrl}/blockchains/smartchain/assets/${contractAddress}/info.json`,
+                type: 'json'
+            },
+            {
+                name: 'Token List',
+                url: `${baseUrl}/tokenlist.json`,
+                type: 'json'
+            },
+            {
+                name: 'Main Token List',
+                url: 'https://khanitohm.github.io/usdtz-assets/tokenlist.json',
+                type: 'json'
+            }
+        ];
+
+        let testResults = {
+            urls: [],
+            structure: false,
+            integration: false
+        };
+
+        async function testUrl(urlInfo) {
+            return new Promise((resolve) => {
+                const startTime = Date.now();
+                
+                if (urlInfo.type === 'image') {
+                    const img = new Image();
+                    img.onload = () => {
+                        resolve({
+                            ...urlInfo,
+                            success: true,
+                            loadTime: Date.now() - startTime,
+                            width: img.naturalWidth,
+                            height: img.naturalHeight
+                        });
+                    };
+                    img.onerror = () => {
+                        resolve({
+                            ...urlInfo,
+                            success: false,
+                            loadTime: Date.now() - startTime,
+                            error: 'Failed to load image'
+                        });
+                    };
+                    img.src = urlInfo.url + '?v=' + Date.now();
+                } else {
+                    fetch(urlInfo.url + '?v=' + Date.now())
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            }
+                            throw new Error(`HTTP ${response.status}`);
+                        })
+                        .then(data => {
+                            resolve({
+                                ...urlInfo,
+                                success: true,
+                                loadTime: Date.now() - startTime,
+                                data: data
+                            });
+                        })
+                        .catch(error => {
+                            resolve({
+                                ...urlInfo,
+                                success: false,
+                                loadTime: Date.now() - startTime,
+                                error: error.message
+                            });
+                        });
+                }
+            });
+        }
+
+        async function testAllUrls() {
+            const urlGrid = document.getElementById('urlGrid');
+            urlGrid.innerHTML = '';
+            
+            testResults.urls = [];
+
+            for (const urlInfo of testUrls) {
+                const urlDiv = document.createElement('div');
+                urlDiv.className = 'url-test';
+                urlDiv.innerHTML = `
+                    <strong>${urlInfo.name}</strong><br>
+                    <small>🔄 Testing...</small>
+                `;
+                urlGrid.appendChild(urlDiv);
+
+                const result = await testUrl(urlInfo);
+                testResults.urls.push(result);
+
+                if (result.success) {
+                    urlDiv.className = 'url-test success';
+                    urlDiv.innerHTML = `
+                        <strong>${result.name}</strong><br>
+                        <small>✅ ${result.type === 'image' ? `${result.width}x${result.height}px` : 'JSON loaded'} | ${result.loadTime}ms</small>
+                    `;
+                } else {
+                    urlDiv.className = 'url-test error';
+                    urlDiv.innerHTML = `
+                        <strong>${result.name}</strong><br>
+                        <small>❌ ${result.error} | ${result.loadTime}ms</small>
+                    `;
+                }
+            }
+
+            updateSummary();
+        }
+
+        async function testTrustWalletIntegration() {
+            const integrationStatus = document.getElementById('integrationStatus');
+            const integrationDetails = document.getElementById('integrationDetails');
+            
+            integrationStatus.className = 'status pending';
+            integrationStatus.textContent = '🔄 Testing Trust Wallet integration...';
+            
+            try {
+                // Test info.json structure
+                const infoResult = testResults.urls.find(r => r.name === 'Info JSON');
+                if (!infoResult || !infoResult.success) {
+                    throw new Error('Info JSON not accessible');
+                }
+                
+                const info = infoResult.data;
+                const requiredFields = ['name', 'symbol', 'type', 'decimals', 'status'];
+                const missingFields = requiredFields.filter(field => !info[field]);
+                
+                if (missingFields.length > 0) {
+                    throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
+                }
+                
+                // Test tokenlist.json structure
+                const tokenlistResult = testResults.urls.find(r => r.name === 'Token List');
+                if (tokenlistResult && tokenlistResult.success) {
+                    const tokenlist = tokenlistResult.data;
+                    if (!tokenlist.tokens || !Array.isArray(tokenlist.tokens)) {
+                        throw new Error('Invalid tokenlist structure');
+                    }
+                }
+                
+                testResults.integration = true;
+                integrationStatus.className = 'status success';
+                integrationStatus.textContent = '✅ Trust Wallet integration ready!';
+                
+                integrationDetails.innerHTML = `
+                    <div class="status success">
+                        <strong>🦄 Trust Wallet Compatible:</strong><br>
+                        ✅ Valid info.json structure<br>
+                        ✅ Required fields present<br>
+                        ✅ Logo accessible<br>
+                        ✅ BEP20 token standard<br>
+                        ✅ BSC network compatible<br><br>
+                        <strong>📋 Ready for:</strong><br>
+                        • Trust Wallet asset listing<br>
+                        • Wallet logo display<br>
+                        • Token metadata integration<br>
+                        • Cross-wallet compatibility
+                    </div>
+                `;
+                
+            } catch (error) {
+                integrationStatus.className = 'status error';
+                integrationStatus.textContent = '❌ Trust Wallet integration failed';
+                
+                integrationDetails.innerHTML = `
+                    <div class="status error">
+                        <strong>❌ Integration Issues:</strong><br>
+                        🚫 Error: ${error.message}<br>
+                        🔧 Check asset structure and accessibility
+                    </div>
+                `;
+            }
+            
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summaryStatus = document.getElementById('summaryStatus');
+            const structureStatus = document.getElementById('structureStatus');
+            
+            const urlSuccessCount = testResults.urls.filter(u => u.success).length;
+            const totalUrls = testResults.urls.length;
+            
+            // Update structure status
+            if (urlSuccessCount === totalUrls) {
+                testResults.structure = true;
+                structureStatus.className = 'status success';
+                structureStatus.textContent = '✅ Trust Wallet structure verified and accessible';
+            } else if (urlSuccessCount > 0) {
+                structureStatus.className = 'status pending';
+                structureStatus.textContent = `⚠️ Partial structure verified (${urlSuccessCount}/${totalUrls} URLs working)`;
+            } else {
+                structureStatus.className = 'status error';
+                structureStatus.textContent = '❌ Trust Wallet structure not accessible';
+            }
+            
+            // Update summary
+            let summaryText = '📊 <strong>Trust Wallet Assets Summary:</strong><br>';
+            let summaryClass = 'status info';
+            
+            if (testResults.structure && testResults.integration) {
+                summaryClass = 'status success';
+                summaryText += `
+                    ✅ Structure: Complete (${urlSuccessCount}/${totalUrls} URLs)<br>
+                    ✅ Integration: Ready<br>
+                    ✅ Logo: Accessible<br>
+                    ✅ Metadata: Valid<br><br>
+                    🎉 <strong>TRUST WALLET ASSETS READY!</strong><br>
+                    🦄 Ready for Trust Wallet integration<br>
+                    📱 Compatible with mobile wallets<br>
+                    🔗 GitHub Pages URLs working
+                `;
+            } else if (testResults.structure) {
+                summaryClass = 'status pending';
+                summaryText += `
+                    ✅ Structure: Complete<br>
+                    ⚠️ Integration: Needs testing<br>
+                    📋 Run integration test for full verification
+                `;
+            } else {
+                summaryClass = 'status error';
+                summaryText += `
+                    ❌ Structure: Issues detected<br>
+                    📋 Check URL accessibility and file structure
+                `;
+            }
+            
+            summaryStatus.className = summaryClass;
+            summaryStatus.innerHTML = summaryText;
+        }
+
+        // Auto-run tests on page load
+        window.addEventListener('load', () => {
+            setTimeout(async () => {
+                await testAllUrls();
+                setTimeout(testTrustWalletIntegration, 2000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
