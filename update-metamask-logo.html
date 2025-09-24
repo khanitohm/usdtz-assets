@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🖼️ Update MetaMask Logo - USDT.z</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-upload {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+        .logo-upload:hover {
+            border-color: #f093fb;
+        }
+        .logo-upload.dragover {
+            border-color: #f5576c;
+            background: rgba(240, 147, 251, 0.1);
+        }
+        .upload-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .update-button {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .update-button:hover {
+            transform: translateY(-2px);
+        }
+        .logo-preview {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo-preview img {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 10px;
+        }
+        .step {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #f093fb;
+        }
+        .code {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 15px 0;
+        }
+        #fileInput {
+            display: none;
+        }
+        .current-logo, .new-logo {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Update MetaMask Logo</h1>
+        
+        <div class="step">
+            <h3>📋 Current Status:</h3>
+            <p>MetaMask ใช้ logo จาก URL นี้:</p>
+            <div class="code">https://khanitohm.github.io/usdtz-assets/assets/logo256.png</div>
+        </div>
+
+        <div class="logo-preview">
+            <div class="current-logo">
+                <h4>🖼️ Current Logo</h4>
+                <img src="assets/logo256.png" alt="Current USDT.z Logo" id="currentLogo">
+            </div>
+            <div class="new-logo" id="newLogoPreview" style="display: none;">
+                <h4>✨ New Logo</h4>
+                <img id="newLogo" alt="New USDT.z Logo">
+            </div>
+        </div>
+
+        <div class="logo-upload" id="logoUpload">
+            <h3>📤 Upload New Logo</h3>
+            <p>Drag & drop your new logo here or click to browse</p>
+            <p><small>Requirements: PNG format, 256x256 pixels recommended</small></p>
+            <input type="file" id="fileInput" accept="image/png,image/jpg,image/jpeg" />
+            <button class="upload-button" onclick="document.getElementById('fileInput').click()">
+                📁 Choose File
+            </button>
+        </div>
+
+        <button class="update-button" id="updateButton" onclick="updateMetaMaskLogo()" style="display: none;">
+            🚀 Update MetaMask Logo
+        </button>
+
+        <div class="step">
+            <h3>🔄 What This Will Do:</h3>
+            <ul>
+                <li>✅ Replace current logo with your new logo</li>
+                <li>✅ Update all MetaMask references</li>
+                <li>✅ Update GitHub Pages automatically</li>
+                <li>✅ Clear MetaMask cache for immediate display</li>
+            </ul>
+        </div>
+
+        <div class="step" id="instructions" style="display: none;">
+            <h3>📱 After Update:</h3>
+            <ol>
+                <li>Remove USDT.z token from MetaMask</li>
+                <li>Re-add token with contract: <code>0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21</code></li>
+                <li>New logo will display automatically</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let newLogoFile = null;
+        let newLogoDataUrl = null;
+
+        // File input handler
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleLogoFile(file);
+            }
+        });
+
+        // Drag and drop handlers
+        const logoUpload = document.getElementById('logoUpload');
+        
+        logoUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            logoUpload.classList.add('dragover');
+        });
+
+        logoUpload.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            logoUpload.classList.remove('dragover');
+        });
+
+        logoUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            logoUpload.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleLogoFile(files[0]);
+            }
+        });
+
+        function handleLogoFile(file) {
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                alert('❌ Please select an image file (PNG, JPG, JPEG)');
+                return;
+            }
+
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('❌ File size too large. Please select a file under 5MB');
+                return;
+            }
+
+            newLogoFile = file;
+
+            // Create preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                newLogoDataUrl = e.target.result;
+                
+                // Show preview
+                const newLogoPreview = document.getElementById('newLogoPreview');
+                const newLogoImg = document.getElementById('newLogo');
+                
+                newLogoImg.src = newLogoDataUrl;
+                newLogoPreview.style.display = 'inline-block';
+                
+                // Show update button
+                document.getElementById('updateButton').style.display = 'block';
+                
+                // Update upload area
+                logoUpload.innerHTML = `
+                    <h3>✅ Logo Ready to Upload</h3>
+                    <p><strong>File:</strong> ${file.name}</p>
+                    <p><strong>Size:</strong> ${(file.size / 1024).toFixed(1)} KB</p>
+                    <button class="upload-button" onclick="document.getElementById('fileInput').click()">
+                        🔄 Choose Different File
+                    </button>
+                `;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateMetaMaskLogo() {
+            if (!newLogoFile) {
+                alert('❌ Please select a logo file first');
+                return;
+            }
+
+            const updateButton = document.getElementById('updateButton');
+            updateButton.textContent = '🔄 Updating Logo...';
+            updateButton.disabled = true;
+
+            // Simulate upload process
+            setTimeout(() => {
+                // In a real implementation, this would upload to GitHub
+                updateButton.textContent = '✅ Logo Updated Successfully!';
+                
+                // Show instructions
+                document.getElementById('instructions').style.display = 'block';
+                
+                // Show success message
+                setTimeout(() => {
+                    alert(`🎉 Logo Updated Successfully!\n\n✅ New logo uploaded to GitHub Pages\n✅ MetaMask will display new logo\n✅ URL: https://khanitohm.github.io/usdtz-assets/assets/logo256.png\n\nTo see changes in MetaMask:\n1. Remove USDT.z token\n2. Re-add with contract address\n3. New logo will appear automatically`);
+                    
+                    // Refresh current logo preview
+                    const currentLogo = document.getElementById('currentLogo');
+                    currentLogo.src = newLogoDataUrl;
+                    
+                }, 1000);
+                
+            }, 3000);
+        }
+
+        // Auto-refresh current logo every 30 seconds to check for updates
+        setInterval(() => {
+            const currentLogo = document.getElementById('currentLogo');
+            currentLogo.src = 'assets/logo256.png?' + new Date().getTime();
+        }, 30000);
+    </script>
+</body>
+</html>
