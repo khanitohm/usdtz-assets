@@ -3,7 +3,7 @@
     "type": "BEP20",
     "symbol": "USDTz",
     "decimals": 18,
-    "website": "https://khanitohm.github.io/usdtz-assets/",
+    "website": "https://khanitohm.github.io/usdtz-assets/project-website.html",
     "description": "USDT.z - Decentralized Stablecoin Token on BSC",
     "explorer": "https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
     "status": "active",
