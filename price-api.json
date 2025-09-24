@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-01-21T00:00:00Z",
+  "base_currency": "USD",
+  "tokens": [
+    {
+      "contract_address": "0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
+      "symbol": "USDTz",
+      "name": "USDT.z",
+      "decimals": 18,
+      "price_usd": "1.00",
+      "price_change_24h": "0.00",
+      "market_cap_usd": "0",
+      "volume_24h_usd": "0",
+      "circulating_supply": "0",
+      "total_supply": "0",
+      "last_updated": "2025-01-21T00:00:00Z",
+      "data_sources": [
+        {
+          "name": "PancakeSwap",
+          "url": "https://pancakeswap.finance/swap?outputCurrency=0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
+          "price": "1.00",
+          "volume_24h": "0"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "provider": "USDT.z Official",
+    "website": "https://khanitohm.github.io/usdtz-assets/",
+    "logo": "https://khanitohm.github.io/usdtz-assets/assets/logo256.png",
+    "explorer": "https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21"
+  }
+}
