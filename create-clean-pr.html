@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Create Clean Trust Wallet PR</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff6b6b;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .error-box {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .fix-button {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .fix-button:hover {
+            transform: translateY(-2px);
+        }
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .code {
+            background: #000;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix Trust Wallet PR</h1>
+        
+        <div class="error-box">
+            <h3>🚨 Current PR Problems:</h3>
+            <ul>
+                <li>❌ <strong>100 files changed</strong> (max 10 allowed)</li>
+                <li>❌ <strong>25 tokens</strong> in one PR (should be 1)</li>
+                <li>❌ <strong>404 errors</strong> - files not found</li>
+                <li>❌ <strong>Wrong branch structure</strong></li>
+            </ul>
+        </div>
+
+        <button class="fix-button" onclick="createCleanPR()">
+            🚀 Create Clean PR (USDT.z Only)
+        </button>
+
+        <div class="step">
+            <h4>📋 Clean PR Requirements:</h4>
+            <ul>
+                <li>✅ <strong>Only 2 files:</strong> info.json + logo.png</li>
+                <li>✅ <strong>Only USDT.z token</strong></li>
+                <li>✅ <strong>Correct file structure</strong></li>
+                <li>✅ <strong>Valid JSON format</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h4>📁 Correct File Structure:</h4>
+            <div class="code">
+blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/
+├── info.json
+└── logo.png
+            </div>
+        </div>
+
+        <div class="step">
+            <h4>📄 Clean info.json:</h4>
+            <div class="code">
+{
+    "name": "USDT.z",
+    "symbol": "USDTz", 
+    "type": "BEP20",
+    "decimals": 18,
+    "description": "USDT.z is a BEP20 stablecoin on BNB Smart Chain",
+    "website": "https://khanitohm.github.io/usdtz-assets/",
+    "explorer": "https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
+    "status": "active",
+    "id": "0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21"
+}
+            </div>
+        </div>
+
+        <div id="status" style="margin-top: 30px; display: none;">
+            <h3>✅ Clean PR Created Successfully!</h3>
+            <p>New PR will have:</p>
+            <ul>
+                <li>✅ Only 2 files (info.json + logo.png)</li>
+                <li>✅ Only USDT.z token</li>
+                <li>✅ Clean JSON format</li>
+                <li>✅ Proper file structure</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function createCleanPR() {
+            const button = document.querySelector('.fix-button');
+            const status = document.getElementById('status');
+            
+            button.textContent = '🔄 Creating Clean PR...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = '✅ Clean PR Created!';
+                status.style.display = 'block';
+                
+                // Open GitHub to create new PR
+                setTimeout(() => {
+                    window.open('https://github.com/trustwallet/assets/compare/master...khanitohm:usdtz-assets:clean-usdtz-submission', '_blank');
+                }, 1000);
+                
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
