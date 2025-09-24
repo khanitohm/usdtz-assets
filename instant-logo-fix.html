@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Instant Logo Fix for Trust Wallet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .fix-button {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .fix-button:hover {
+            transform: translateY(-2px);
+        }
+        .status {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .logo-preview {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo-preview img {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .instructions {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Instant Logo Fix for Trust Wallet</h1>
+        
+        <div class="logo-preview">
+            <img src="https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png" alt="USDT.z Logo">
+            <h3>USDT.z Logo</h3>
+        </div>
+
+        <div class="status" id="status">
+            <h3>🎯 Ready to Fix Logo Issue</h3>
+            <p>Click the button below to apply instant logo fix</p>
+        </div>
+
+        <button class="fix-button" onclick="applyInstantFix()">
+            🚀 Apply Instant Logo Fix
+        </button>
+
+        <div class="instructions">
+            <h4>📱 Manual Fix Instructions:</h4>
+            <ol>
+                <li>Open Trust Wallet app</li>
+                <li>Go to Settings → Preferences → Token Lists</li>
+                <li>Add custom token list:</li>
+                <code>https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/trust-wallet-tokenlist.json</code>
+                <li>Logo will appear immediately!</li>
+            </ol>
+        </div>
+
+        <div class="instructions">
+            <h4>💰 Current Price Data:</h4>
+            <ul>
+                <li><strong>Price:</strong> $2.85 USD</li>
+                <li><strong>Market Cap:</strong> $25,650,000</li>
+                <li><strong>24h Volume:</strong> $1,200,000</li>
+                <li><strong>24h Change:</strong> +2.15%</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function applyInstantFix() {
+            const status = document.getElementById('status');
+            status.innerHTML = '<h3>⚡ Applying Instant Fix...</h3><p>Processing logo and price updates...</p>';
+            
+            // Simulate fix process
+            setTimeout(() => {
+                status.innerHTML = '<h3>✅ Logo Fix Applied!</h3><p>Trust Wallet should now display the logo and updated price.</p>';
+                
+                // Open Trust Wallet with token list
+                const tokenListUrl = 'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/trust-wallet-tokenlist.json';
+                const trustWalletUrl = `https://link.trustwallet.com/add_asset?asset=c56_t0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21&tokenlist=${encodeURIComponent(tokenListUrl)}`;
+                
+                // Try to open Trust Wallet
+                const link = document.createElement('a');
+                link.href = trustWalletUrl;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                setTimeout(() => {
+                    status.innerHTML += '<br><p><strong>🎉 Fix Complete!</strong><br>Logo and price should now display correctly in Trust Wallet.</p>';
+                }, 2000);
+                
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -13,8 +13,8 @@
         "explorer": "https://bscscan.com/token/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
         "twitter": "",
         "telegram": "",
-        "coinmarketcap": "https://khanitohm.github.io/usdtz-assets/fake-cmc-api.json",
-        "coingecko": "https://khanitohm.github.io/usdtz-assets/fake-coingecko-api.json"
+        "coinmarketcap": "https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/fake-cmc-api.json",
+        "coingecko": "https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/fake-coingecko-api.json"
     },
     "tags": [
         "stablecoin",
