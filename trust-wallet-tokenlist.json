@@ -1,0 +1,21 @@
+{
+  "name": "USDT.z Token List",
+  "logoURI": "https://khanitohm.github.io/usdtz-assets/assets/logo256.png",
+  "keywords": ["audited", "verified", "usdtz", "stablecoin"],
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 56,
+      "address": "0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21",
+      "name": "USDT.z",
+      "symbol": "USDTz",
+      "decimals": 18,
+      "logoURI": "https://khanitohm.github.io/usdtz-assets/assets/logo256.png",
+      "tags": ["stablecoin", "defi"]
+    }
+  ]
+}
