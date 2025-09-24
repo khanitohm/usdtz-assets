@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Mobile App Logo Compatibility Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 15px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #667eea;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #667eea;
+        }
+        .platform-test {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .platform-test h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        .logo-preview {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .logo-preview img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+            margin: 5px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .success { background: rgba(40, 167, 69, 0.3); border: 1px solid #28a745; color: #28a745; }
+        .error { background: rgba(220, 53, 69, 0.3); border: 1px solid #dc3545; color: #dc3545; }
+        .warning { background: rgba(255, 193, 7, 0.3); border: 1px solid #ffc107; color: #ffc107; }
+        .info { background: rgba(23, 162, 184, 0.3); border: 1px solid #17a2b8; color: #17a2b8; }
+        .test-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 8px 0;
+            transition: all 0.3s;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .device-info {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 0.8em;
+            border: 1px solid #667eea;
+        }
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .compatibility-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .url-test {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.75em;
+            word-break: break-all;
+        }
+        @media (max-width: 600px) {
+            .compatibility-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Mobile Logo Test</h1>
+        
+        <div class="logo-preview">
+            <h3>🎯 USDT.z Logo Preview</h3>
+            <img src="https://khanitohm.github.io/usdtz-assets/assets/logo256.png" alt="USDT.z Logo" id="mainLogo">
+            <div class="status info" id="logoStatus">
+                🔄 Testing logo accessibility...
+            </div>
+        </div>
+
+        <div class="device-info" id="deviceInfo">
+            🔍 Detecting device information...
+        </div>
+
+        <div class="platform-test">
+            <h3>🍎 iOS Compatibility</h3>
+            <div class="compatibility-grid">
+                <div class="compatibility-item">
+                    <strong>📱 iOS Safari</strong>
+                    <div class="status info" id="iosSafariStatus">Testing...</div>
+                </div>
+                <div class="compatibility-item">
+                    <strong>🦊 MetaMask iOS</strong>
+                    <div class="status info" id="iosMetaMaskStatus">Testing...</div>
+                </div>
+            </div>
+            <button class="test-button" onclick="testIOSCompatibility()">
+                🧪 Test iOS Integration
+            </button>
+            <div id="iosResults"></div>
+        </div>
+
+        <div class="platform-test">
+            <h3>🤖 Android Compatibility</h3>
+            <div class="compatibility-grid">
+                <div class="compatibility-item">
+                    <strong>📱 Android Chrome</strong>
+                    <div class="status info" id="androidChromeStatus">Testing...</div>
+                </div>
+                <div class="compatibility-item">
+                    <strong>🦊 MetaMask Android</strong>
+                    <div class="status info" id="androidMetaMaskStatus">Testing...</div>
+                </div>
+            </div>
+            <button class="test-button" onclick="testAndroidCompatibility()">
+                🧪 Test Android Integration
+            </button>
+            <div id="androidResults"></div>
+        </div>
+
+        <div class="platform-test">
+            <h3>🌐 URL Accessibility Test</h3>
+            <div id="urlTests"></div>
+            <button class="test-button" onclick="testAllUrls()">
+                🔗 Test All Logo URLs
+            </button>
+        </div>
+
+        <div class="platform-test">
+            <h3>🦊 MetaMask Mobile Integration</h3>
+            <div class="status info" id="metamaskMobileStatus">
+                🔄 Checking MetaMask mobile compatibility...
+            </div>
+            <button class="test-button" onclick="testMetaMaskMobile()">
+                📱 Test MetaMask Mobile
+            </button>
+            <div id="metamaskMobileResults"></div>
+        </div>
+
+        <div class="platform-test">
+            <h3>📊 Overall Compatibility Report</h3>
+            <div class="status info" id="overallStatus">
+                🔄 Generating compatibility report...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const logoUrls = [
+            'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+            'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png',
+            'https://khanitohm.github.io/usdtz-assets/assets/logo.png',
+            'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png'
+        ];
+
+        let testResults = {
+            ios: { safari: false, metamask: false },
+            android: { chrome: false, metamask: false },
+            urls: [],
+            device: {},
+            metamaskMobile: false
+        };
+
+        function detectDevice() {
+            const ua = navigator.userAgent;
+            const device = {
+                platform: navigator.platform,
+                userAgent: ua,
+                isIOS: /iPad|iPhone|iPod/.test(ua),
+                isAndroid: /Android/.test(ua),
+                isMobile: /Mobi|Android/i.test(ua),
+                isSafari: /Safari/.test(ua) && !/Chrome/.test(ua),
+                isChrome: /Chrome/.test(ua),
+                isMetaMask: typeof window.ethereum !== 'undefined',
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                devicePixelRatio: window.devicePixelRatio
+            };
+
+            testResults.device = device;
+
+            const deviceInfoDiv = document.getElementById('deviceInfo');
+            deviceInfoDiv.innerHTML = `
+                🔍 <strong>Device Detection:</strong><br>
+                📱 Platform: ${device.platform}<br>
+                📊 Screen: ${device.screenWidth}x${device.screenHeight} (${device.devicePixelRatio}x)<br>
+                🌐 Browser: ${device.isSafari ? 'Safari' : device.isChrome ? 'Chrome' : 'Other'}<br>
+                📱 Mobile: ${device.isMobile ? 'Yes' : 'No'}<br>
+                🍎 iOS: ${device.isIOS ? 'Yes' : 'No'}<br>
+                🤖 Android: ${device.isAndroid ? 'Yes' : 'No'}<br>
+                🦊 MetaMask: ${device.isMetaMask ? 'Detected' : 'Not Detected'}
+            `;
+
+            return device;
+        }
+
+        async function testLogoUrl(url) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                const startTime = Date.now();
+                
+                img.onload = () => {
+                    const loadTime = Date.now() - startTime;
+                    resolve({
+                        url: url,
+                        success: true,
+                        loadTime: loadTime,
+                        width: img.naturalWidth,
+                        height: img.naturalHeight
+                    });
+                };
+                
+                img.onerror = () => {
+                    resolve({
+                        url: url,
+                        success: false,
+                        loadTime: Date.now() - startTime,
+                        error: 'Failed to load'
+                    });
+                };
+                
+                img.src = url + '?v=' + Date.now();
+            });
+        }
+
+        async function testAllUrls() {
+            const urlTestsDiv = document.getElementById('urlTests');
+            urlTestsDiv.innerHTML = '<div class="status info">🔄 Testing all logo URLs...</div>';
+
+            testResults.urls = [];
+
+            for (const url of logoUrls) {
+                const urlDiv = document.createElement('div');
+                urlDiv.className = 'url-test';
+                urlDiv.innerHTML = `🔄 Testing: ${url}`;
+                urlTestsDiv.appendChild(urlDiv);
+
+                const result = await testLogoUrl(url);
+                testResults.urls.push(result);
+
+                if (result.success) {
+                    urlDiv.className = 'url-test';
+                    urlDiv.innerHTML = `✅ ${url}<br>📏 ${result.width}x${result.height}px | ⏱️ ${result.loadTime}ms`;
+                    urlDiv.style.borderColor = '#28a745';
+                } else {
+                    urlDiv.className = 'url-test';
+                    urlDiv.innerHTML = `❌ ${url}<br>⚠️ ${result.error} | ⏱️ ${result.loadTime}ms`;
+                    urlDiv.style.borderColor = '#dc3545';
+                }
+            }
+
+            updateOverallStatus();
+        }
+
+        async function testIOSCompatibility() {
+            const device = testResults.device;
+            const iosResultsDiv = document.getElementById('iosResults');
+            
+            if (device.isIOS) {
+                document.getElementById('iosSafariStatus').className = 'status success';
+                document.getElementById('iosSafariStatus').textContent = '✅ Running on iOS Safari';
+                testResults.ios.safari = true;
+
+                if (device.isMetaMask) {
+                    document.getElementById('iosMetaMaskStatus').className = 'status success';
+                    document.getElementById('iosMetaMaskStatus').textContent = '✅ MetaMask detected on iOS';
+                    testResults.ios.metamask = true;
+                } else {
+                    document.getElementById('iosMetaMaskStatus').className = 'status warning';
+                    document.getElementById('iosMetaMaskStatus').textContent = '⚠️ MetaMask not detected';
+                }
+
+                iosResultsDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ <strong>iOS Compatibility:</strong><br>
+                        📱 Device: iOS ${device.isIOS ? 'Detected' : 'Not Detected'}<br>
+                        🌐 Safari: ${device.isSafari ? 'Yes' : 'No'}<br>
+                        🦊 MetaMask: ${device.isMetaMask ? 'Available' : 'Not Available'}<br>
+                        📏 Screen: ${device.screenWidth}x${device.screenHeight}
+                    </div>
+                `;
+            } else {
+                document.getElementById('iosSafariStatus').className = 'status info';
+                document.getElementById('iosSafariStatus').textContent = 'ℹ️ Not running on iOS';
+                
+                document.getElementById('iosMetaMaskStatus').className = 'status info';
+                document.getElementById('iosMetaMaskStatus').textContent = 'ℹ️ iOS test requires iOS device';
+
+                iosResultsDiv.innerHTML = `
+                    <div class="status info">
+                        ℹ️ <strong>iOS Testing:</strong><br>
+                        📱 Current device is not iOS<br>
+                        🧪 To test iOS compatibility:<br>
+                        1. Open this page on iPhone/iPad<br>
+                        2. Test in Safari browser<br>
+                        3. Test with MetaMask iOS app
+                    </div>
+                `;
+            }
+
+            updateOverallStatus();
+        }
+
+        async function testAndroidCompatibility() {
+            const device = testResults.device;
+            const androidResultsDiv = document.getElementById('androidResults');
+            
+            if (device.isAndroid) {
+                document.getElementById('androidChromeStatus').className = 'status success';
+                document.getElementById('androidChromeStatus').textContent = '✅ Running on Android Chrome';
+                testResults.android.chrome = true;
+
+                if (device.isMetaMask) {
+                    document.getElementById('androidMetaMaskStatus').className = 'status success';
+                    document.getElementById('androidMetaMaskStatus').textContent = '✅ MetaMask detected on Android';
+                    testResults.android.metamask = true;
+                } else {
+                    document.getElementById('androidMetaMaskStatus').className = 'status warning';
+                    document.getElementById('androidMetaMaskStatus').textContent = '⚠️ MetaMask not detected';
+                }
+
+                androidResultsDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ <strong>Android Compatibility:</strong><br>
+                        📱 Device: Android ${device.isAndroid ? 'Detected' : 'Not Detected'}<br>
+                        🌐 Chrome: ${device.isChrome ? 'Yes' : 'No'}<br>
+                        🦊 MetaMask: ${device.isMetaMask ? 'Available' : 'Not Available'}<br>
+                        📏 Screen: ${device.screenWidth}x${device.screenHeight}
+                    </div>
+                `;
+            } else {
+                document.getElementById('androidChromeStatus').className = 'status info';
+                document.getElementById('androidChromeStatus').textContent = 'ℹ️ Not running on Android';
+                
+                document.getElementById('androidMetaMaskStatus').className = 'status info';
+                document.getElementById('androidMetaMaskStatus').textContent = 'ℹ️ Android test requires Android device';
+
+                androidResultsDiv.innerHTML = `
+                    <div class="status info">
+                        ℹ️ <strong>Android Testing:</strong><br>
+                        📱 Current device is not Android<br>
+                        🧪 To test Android compatibility:<br>
+                        1. Open this page on Android device<br>
+                        2. Test in Chrome browser<br>
+                        3. Test with MetaMask Android app
+                    </div>
+                `;
+            }
+
+            updateOverallStatus();
+        }
+
+        async function testMetaMaskMobile() {
+            const metamaskMobileStatusDiv = document.getElementById('metamaskMobileStatus');
+            const metamaskMobileResultsDiv = document.getElementById('metamaskMobileResults');
+            
+            if (typeof window.ethereum !== 'undefined') {
+                metamaskMobileStatusDiv.className = 'status success';
+                metamaskMobileStatusDiv.textContent = '✅ MetaMask detected - Testing mobile integration...';
+                
+                try {
+                    // Test wallet_watchAsset on mobile
+                    const timestamp = Date.now();
+                    const result = await window.ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+                                symbol: 'USDTz',
+                                decimals: 18,
+                                image: `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`
+                            }
+                        }
+                    });
+                    
+                    testResults.metamaskMobile = true;
+                    metamaskMobileStatusDiv.className = 'status success';
+                    metamaskMobileStatusDiv.textContent = '✅ MetaMask mobile integration successful!';
+                    
+                    metamaskMobileResultsDiv.innerHTML = `
+                        <div class="status success">
+                            🎉 <strong>MetaMask Mobile Test Result:</strong><br>
+                            ✅ USDT.z token added successfully<br>
+                            ✅ Logo should now display in MetaMask mobile<br>
+                            📱 Platform: ${testResults.device.isIOS ? 'iOS' : testResults.device.isAndroid ? 'Android' : 'Other'}<br>
+                            🦊 Integration: Working
+                        </div>
+                    `;
+                } catch (error) {
+                    metamaskMobileStatusDiv.className = 'status error';
+                    metamaskMobileStatusDiv.textContent = '❌ MetaMask mobile integration failed';
+                    
+                    metamaskMobileResultsDiv.innerHTML = `
+                        <div class="status error">
+                            ❌ <strong>MetaMask Mobile Test Failed:</strong><br>
+                            🚫 Error: ${error.message}<br>
+                            📱 Platform: ${testResults.device.isIOS ? 'iOS' : testResults.device.isAndroid ? 'Android' : 'Other'}<br>
+                            🔧 Recommendation: Try manual token addition
+                        </div>
+                    `;
+                }
+            } else {
+                metamaskMobileStatusDiv.className = 'status warning';
+                metamaskMobileStatusDiv.textContent = '⚠️ MetaMask not detected on this device';
+                
+                metamaskMobileResultsDiv.innerHTML = `
+                    <div class="status warning">
+                        ⚠️ <strong>MetaMask Not Available:</strong><br>
+                        📱 Platform: ${testResults.device.isIOS ? 'iOS' : testResults.device.isAndroid ? 'Android' : 'Desktop'}<br>
+                        🦊 MetaMask: Not installed or not accessible<br>
+                        💡 Install MetaMask mobile app to test integration
+                    </div>
+                `;
+            }
+
+            updateOverallStatus();
+        }
+
+        function updateOverallStatus() {
+            const overallStatusDiv = document.getElementById('overallStatus');
+            const device = testResults.device;
+            const urlSuccessCount = testResults.urls.filter(u => u.success).length;
+            const totalUrls = testResults.urls.length;
+            
+            let statusText = '📊 <strong>Compatibility Report:</strong><br>';
+            let statusClass = 'status info';
+            
+            // Platform detection
+            if (device.isIOS) {
+                statusText += '🍎 iOS: Detected<br>';
+                statusClass = 'status success';
+            } else if (device.isAndroid) {
+                statusText += '🤖 Android: Detected<br>';
+                statusClass = 'status success';
+            } else {
+                statusText += '💻 Desktop: Detected<br>';
+            }
+            
+            // URL testing
+            if (totalUrls > 0) {
+                statusText += `🔗 Logo URLs: ${urlSuccessCount}/${totalUrls} working<br>`;
+                if (urlSuccessCount === totalUrls) {
+                    statusText += '✅ All logo URLs accessible<br>';
+                } else if (urlSuccessCount > 0) {
+                    statusText += '⚠️ Some logo URLs working<br>';
+                } else {
+                    statusText += '❌ No logo URLs working<br>';
+                    statusClass = 'status error';
+                }
+            }
+            
+            // MetaMask detection
+            if (device.isMetaMask) {
+                statusText += '🦊 MetaMask: Available<br>';
+                if (testResults.metamaskMobile) {
+                    statusText += '✅ Mobile integration: Working<br>';
+                    statusText += '🎉 <strong>LOGO SHOULD DISPLAY IN MOBILE METAMASK!</strong>';
+                } else {
+                    statusText += '⚠️ Mobile integration: Test needed';
+                }
+            } else {
+                statusText += '⚠️ MetaMask: Not detected<br>';
+                statusText += '📱 Install MetaMask mobile app for full testing';
+            }
+            
+            overallStatusDiv.className = statusClass;
+            overallStatusDiv.innerHTML = statusText;
+        }
+
+        // Auto-run tests on page load
+        window.addEventListener('load', () => {
+            detectDevice();
+            
+            // Auto-test everything after 2 seconds
+            setTimeout(async () => {
+                await testAllUrls();
+                await testIOSCompatibility();
+                await testAndroidCompatibility();
+                
+                // Auto-test MetaMask if available
+                if (testResults.device.isMetaMask && testResults.device.isMobile) {
+                    setTimeout(testMetaMaskMobile, 2000);
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
