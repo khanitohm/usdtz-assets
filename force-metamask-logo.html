@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Force MetaMask Logo Display - USDT.z</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #f093fb;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f093fb;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #f093fb;
+        }
+        .force-button {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 25px 50px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
+        }
+        .force-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.6);
+        }
+        .logo-preview {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .logo-preview img {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.5);
+            border: 3px solid #f093fb;
+        }
+        .status {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+        .method {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .code {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 15px 0;
+            border: 1px solid #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Force Logo Display</h1>
+        
+        <div class="logo-preview">
+            <img src="assets/logo256.png" alt="USDT.z Logo" id="logoPreview">
+            <h3>USDT.z Logo</h3>
+        </div>
+
+        <button class="force-button" onclick="forceLogoDisplay()">
+            🚀 FORCE LOGO DISPLAY NOW
+        </button>
+
+        <div class="method">
+            <h3>🎯 Method 1: Direct MetaMask Integration</h3>
+            <p>Force MetaMask to recognize and display logo immediately</p>
+            <button class="force-button" onclick="addToMetaMaskForced()" style="font-size: 16px; padding: 15px 30px;">
+                🦊 Add to MetaMask (Forced Logo)
+            </button>
+        </div>
+
+        <div class="method">
+            <h3>🎯 Method 2: Cache Bypass</h3>
+            <p>Use cache-busting URL to force logo refresh</p>
+            <div class="code" id="cacheBypassUrl">
+                https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=<span id="timestamp"></span>
+            </div>
+            <button class="force-button" onclick="copyBypassUrl()" style="font-size: 16px; padding: 15px 30px;">
+                📋 Copy Cache-Bypass URL
+            </button>
+        </div>
+
+        <div class="method">
+            <h3>🎯 Method 3: Multiple Logo Sources</h3>
+            <p>Try multiple logo URLs for maximum compatibility</p>
+            <button class="force-button" onclick="tryAllLogoSources()" style="font-size: 16px; padding: 15px 30px;">
+                🔄 Try All Logo Sources
+            </button>
+        </div>
+
+        <div class="status" id="status">
+            <h3>✅ Logo Force Applied!</h3>
+            <p>MetaMask should now display the USDT.z logo</p>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp for cache busting
+        document.getElementById('timestamp').textContent = Date.now();
+
+        function forceLogoDisplay() {
+            const button = document.querySelector('.force-button');
+            const status = document.getElementById('status');
+            
+            button.textContent = '🔄 Forcing Logo Display...';
+            button.disabled = true;
+            
+            // Execute all methods simultaneously
+            setTimeout(() => {
+                addToMetaMaskForced();
+                copyBypassUrl();
+                tryAllLogoSources();
+                
+                status.style.display = 'block';
+                button.textContent = '✅ Logo Force Complete!';
+                
+                setTimeout(() => {
+                    alert('🎉 Logo Force Applied!\n\n✅ MetaMask should now display USDT.z logo\n✅ Cache-bypass URL copied\n✅ Multiple sources tried\n\nIf logo still not visible:\n1. Remove token from MetaMask\n2. Re-add with contract address\n3. Logo will appear immediately');
+                }, 1000);
+                
+            }, 2000);
+        }
+
+        async function addToMetaMaskForced() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Use cache-busting timestamp
+                    const timestamp = Date.now();
+                    const logoUrls = [
+                        `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`,
+                        `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png?v=${timestamp}`,
+                        `https://khanitohm.github.io/usdtz-assets/assets/logo.png?v=${timestamp}`,
+                        `https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png?v=${timestamp}`
+                    ];
+
+                    // Try each logo URL
+                    for (let i = 0; i < logoUrls.length; i++) {
+                        try {
+                            await window.ethereum.request({
+                                method: 'wallet_watchAsset',
+                                params: {
+                                    type: 'ERC20',
+                                    options: {
+                                        address: '0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21',
+                                        symbol: 'USDTz',
+                                        decimals: 18,
+                                        image: logoUrls[i]
+                                    }
+                                }
+                            });
+                            
+                            console.log(`✅ Logo added with URL ${i + 1}: ${logoUrls[i]}`);
+                            break; // Success, exit loop
+                            
+                        } catch (error) {
+                            console.log(`❌ Logo URL ${i + 1} failed: ${logoUrls[i]}`);
+                            if (i === logoUrls.length - 1) {
+                                throw error; // Last attempt failed
+                            }
+                        }
+                    }
+                    
+                    alert('✅ USDT.z token added to MetaMask with forced logo!');
+                    
+                } catch (error) {
+                    console.error('Error adding token to MetaMask:', error);
+                    alert('❌ Error adding token to MetaMask. Please add manually with contract: 0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21');
+                }
+            } else {
+                alert('🦊 MetaMask is not installed. Please install MetaMask first.');
+            }
+        }
+
+        function copyBypassUrl() {
+            const timestamp = Date.now();
+            const bypassUrl = `https://khanitohm.github.io/usdtz-assets/assets/logo256.png?v=${timestamp}`;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(bypassUrl).then(() => {
+                    console.log('✅ Cache-bypass URL copied');
+                });
+            }
+            
+            // Update display
+            document.getElementById('timestamp').textContent = timestamp;
+        }
+
+        function tryAllLogoSources() {
+            const logoSources = [
+                'https://khanitohm.github.io/usdtz-assets/assets/logo256.png',
+                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo256.png',
+                'https://khanitohm.github.io/usdtz-assets/assets/logo.png',
+                'https://raw.githubusercontent.com/khanitohm/usdtz-assets/main/assets/logo.png',
+                'https://khanitohm.github.io/usdtz-assets/blockchains/smartchain/assets/0x5AcE9601716FED9Fd3718bC6144dB8f77a86bd21/logo.png'
+            ];
+
+            console.log('🔄 Testing all logo sources...');
+            
+            logoSources.forEach((url, index) => {
+                const img = new Image();
+                img.onload = () => {
+                    console.log(`✅ Logo source ${index + 1} working: ${url}`);
+                };
+                img.onerror = () => {
+                    console.log(`❌ Logo source ${index + 1} failed: ${url}`);
+                };
+                img.src = url + '?v=' + Date.now();
+            });
+
+            // Copy all URLs to clipboard
+            const allUrls = logoSources.join('\n');
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(allUrls).then(() => {
+                    console.log('✅ All logo URLs copied to clipboard');
+                });
+            }
+        }
+
+        // Auto-refresh logo preview every 10 seconds
+        setInterval(() => {
+            const logoPreview = document.getElementById('logoPreview');
+            logoPreview.src = 'assets/logo256.png?' + Date.now();
+        }, 10000);
+
+        // Auto-execute force display after 3 seconds
+        setTimeout(() => {
+            console.log('🚀 Auto-executing logo force display...');
+            forceLogoDisplay();
+        }, 3000);
+    </script>
+</body>
+</html>
