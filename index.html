@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT.z Token - BSC</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .symbol {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .info-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+        .info-value {
+            color: #666;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .contract-address {
+            font-size: 0.9em;
+        }
+        .add-metamask {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 20px 0;
+        }
+        .add-metamask:hover {
+            transform: translateY(-2px);
+        }
+        .links {
+            margin-top: 30px;
+        }
+        .link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+        .link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/logo256.png" alt="USDT.z Logo" class="logo">
+        <h1>USDT.z</h1>
+        <div class="symbol">USDTz Token</div>
+        
+        <div class="info">
+            <div class="info-item">
+                <span class="info-label">Network:</span>
+                <span class="info-value">BNB Smart Chain (BSC)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Symbol:</span>
+                <span class="info-value">USDTz</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Decimals:</span>
+                <span class="info-value">18</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Contract:</span>
+                <span class="info-value contract-address">0x54C27053FA8d3C126D192aE236e42F44d19396d3</span>
+            </div>
+        </div>
+
+        <button class="add-metamask" onclick="addToMetaMask()">
+            🦊 Add to MetaMask
+        </button>
+
+        <div class="links">
+            <a href="https://bscscan.com/token/0x54C27053FA8d3C126D192aE236e42F44d19396d3" target="_blank" class="link">
+                📊 BSCScan
+            </a>
+            <a href="https://pancakeswap.finance/swap?outputCurrency=0x54C27053FA8d3C126D192aE236e42F44d19396d3" target="_blank" class="link">
+                🥞 PancakeSwap
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function addToMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: '0x54C27053FA8d3C126D192aE236e42F44d19396d3',
+                                symbol: 'USDTz',
+                                decimals: 18,
+                                image: 'https://khanitohm.github.io/usdtz-assets/assets/logo256.png'
+                            }
+                        }
+                    });
+                    alert('USDT.z token added to MetaMask!');
+                } catch (error) {
+                    console.error('Error adding token to MetaMask:', error);
+                    alert('Error adding token to MetaMask. Please add manually.');
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask first.');
+            }
+        }
+    </script>
+</body>
+</html>
